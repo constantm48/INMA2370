@@ -1,4 +1,3 @@
-
 \ifx \globalmark \undefined %% This is default.
 	\input{header}
 	\begin{document} %% Crashes if put after (one of the many mysteries of LaTeX?).
@@ -655,24 +654,25 @@ Calculons les dérivées troisièmes des coordonnées $x$ et $y$ :
 \stackrel{\dots}{x} &= \dot u_1 \cos \theta - u_1 \dot \theta \sin \theta \\
 \stackrel{\dots}{y} &= \dot u_1 \sin \theta + u_1 \dot \theta \cos \theta
 \end{align*}
-Il est clair que ces expressions ne peuvent pas être utilisées pour bâtir une forme de Brunovski du type \eqref{brunomultinonlin} car elles ne contiennent pas l'entrée $u_2$. Par contre si on considère l'entrée $u_1$ comme une variable d'état supplémentaire et qu'on ajoute deux intégrateurs à l'entrée du système, alors on peut montrer que le système étendu possède une forme de Brunovski multi-entrées avec les coordonnées $y_1 = x$ et $y_2 = y$ comme sorties de Brunovski. Le système étendu s'écrit donc comme suit :
+Il est clair que ces expressions ne peuvent pas être utilisées pour bâtir une forme de Brunovski du type \eqref{brunomultinonlin} car elles ne contiennent pas l'entrée $u_2$. Par contre si on considère l'entrée $u_1$ comme une variable d'état supplémentaire et qu'on ajoute deux intégrateurs à l'entrée du système, alors on peut montrer que le système étendu possède une forme de Brunovski multi-entrées avec les coordonnées $y_1 = x$ et $y_2 = y$ comme sorties de Brunovski. The extended system can be written in the following format :
 \begin{align} \label{etendufusee}
 &\ddot x = u_1 \cos \theta \nonumber \\
 &\ddot y = u_1 \sin \theta \nonumber \\
 &\ddot \theta = u_2 \\
 &\ddot u_1 = w_1 \nonumber
 \end{align}
-C'est un système qui est maintenant de dimension 8 (alors que le système de départ était de dimension 6) avec deux entrées $w_1$ et $u_2$. Calculons les dérivées 4-ièmes des sorties de Brunovski $x$ et $y$ :
+This is a system of 8 dimensions (while the original system was a 6 dimension system) with two entries $w_1$ and $w_2$. Calculate the fourth derivative of the Brunovski outputs $x$ and $y$ : 
 \begin{align}
 &\left(\begin{array}{c}\stackrel{....}{x} \\ \stackrel{....}{y} \end{array}\right) = \left(\begin{array}{c}-2\dot u_1 \dot \theta \sin \theta - u_1 \dot \theta^2 \cos \theta 
  \\ 2\dot u_1 \dot \theta \cos \theta + u_1 \dot \theta^2 \sin \theta\end{array}\right) \nonumber \\
 &\hspace{4cm} + \left(\begin{array}{cc}\cos \theta & -u_1 \sin \theta \\\sin \theta & u_1 \cos \theta\end{array}\right)\left(\begin{array}{c}w_1 \\u_2\end{array}\right). \label{brunofusee}
 \end{align}
-Il est maintenant clair que ce système peut être écrit sous une forme de Brunovski multi-entrées de la forme :
+It's now clear that the system can be written in a form of multi-input Brunovski :
 \eqnn
 \left(\begin{array}{c}\stackrel{....}{y_1} \\\stackrel{....}{y_2} \end{array}\right) = \alpha(z) + G(z) \left(\begin{array}{c}w_1 \\u_2\end{array}\right).
 \eeqnn
-En effet, à partir du modèle d'état \eqref{etendufusee}, les différents termes qui apparaissent dans l'équation \eqref{brunofusee} peuvent être exprimés (après un peu de calcul !) en fonction des sorties de Brunovski $y_1 = x$ et $y_2 = y$ et de leurs dérivées, comme suit :
+Indeed, from the state model \eqref{etendufusee}, the different terms appearing in the equation \eqref{brunofusee} can be expressed (after some calculations !) as a function of Brunovski outputs  $y_1 = x$ et $y_2 = y$ and to their derivatives, as follows :
+
 \eqnn
  u_1 \cos \theta = \ddot y_1, \hu  u_1 \sin \theta = \ddot y_2 + g_o,
  \eeqnn
@@ -685,28 +685,30 @@ En effet, à partir du modèle d'état \eqref{etendufusee}, les différents term
 \eqnn
 \dot u_1 \cos \theta = \stackrel{...}{y_1} + \dot \theta (\ddot y_2 + g_o), \hu \dot u_1 \sin \theta = \stackrel{...}{y_2} - \dot \theta \ddot y_1.
 \eeqnn
+
+On the other hand, the matrix 
 D'autre part, la matrice
 \eqnn
 G(z) = \left(\begin{array}{cc}\cos \theta & -u_1 \sin \theta \\\sin \theta & u_1 \cos \theta\end{array}\right)
 \eeqnn
-est régulière pour tout $\theta$ et pour tout $u_1 \neq 0$ (c-à-d tant que la poussée totale $F_1 + F_2$ des moteurs de la fusée n'est pas nulle). \qed \\
+is non-singular for all $\theta$ and for all $u_1 \neq 0$ (i.e. as long as the total thrust $F_1 + F_2$ provided by the rocket engines is different of zero) \qed \\
 
-Les systèmes non-linéaires qui peuvent être mis sous une forme de Brunovski multi-entrées, moyennant éventuellement une extension dynamique,  sont appelés dans la littérature, {\em systèmes (différentiellement) plats} parce qu'ils sont, en un certain sens, équivalents à des systèmes linéaires comme le montre la méthode de calcul de la planification des trajectoires. Pour cette raison, les sorties de Brunovski sont parfois aussi appelées {\em sorties plates}.
+The non-linear systems which may be written in the form of mutli-inputs Brunovski form, thanks to a possible dynamic extension, are called in the literature, {\em (differentially) flat system}, because they are in a sense, equivalent to linear systems as showed by the computation of the planning trajectory. For this reason, the Brunovski outputs are sometimes called {\em flat ouputs}.
 
-\section{Annexe : formules de géométrie différentielle}
+\section{Appendix : Differential Geometry Formulas}
 
 \begin{enumerate}
-\item Champ de vecteur
+\item Vector field
 \eqnn
 f(x) = \bma{c} f_1(x)\\ f_2(x) \\ \vdots \\ f_n(x) \ema
 \eeqnn
 \vspace{5mm}
-\item Crochet de Lie
+\item Lie algebra
 \eqnn
 [ f(x) , g(x) ] &=& \dfrac{\partial g(x)}{\partial x} f(x) - \dfrac{\partial f(x)}{\partial x} g(x) \\ && \\  \left[ f(x) , g(x) \right] &=& - [ g(x) , f(x) ]
 \eeqnn
 \vspace{5mm}
-\item Notation itérative
+\item Iterative Notation
 \eqnn
 ad_fg &=& [f,g] \\ && \\
 ad_f^2g &=& [f,ad_fg] = [f, [f,g]] \\
@@ -714,26 +716,25 @@ ad_f^2g &=& [f,ad_fg] = [f, [f,g]] \\
 ad_f^kg &=& [f, ad_f^{k-1}g]
 \eeqnn
 \vspace{5mm}
-\item Distribution = ensemble d'espaces vectoriels
+\item Distribution = set of vector fields
 \eqnn
 \Delta(x) = \span \left\{ f_1(x), f_2(x), \hdots , f_d(x) \right\}
 \eeqnn
 \vspace{5mm}
-\item Distribution $\Delta$ {\em involutive} si
+\item Distribution $\Delta$ is {\em involutive} if
 $[f_1,f_2] \in \Delta \;\; \forall \;\; f_1 \in \Delta \; , \; f_2 \in \Delta$
 \vspace{5mm}
-\item Distribution $\Delta$ {\em invariante} par rapport à $g$ si
+\item Distribution $\Delta$ is {\em invariant} in relation to $g$ if
 \eqnn
 \forall \;\; f \in \Delta \;\; \Rightarrow \;\; [g,f] \in \Delta
 \eeqnn
 \end{enumerate}
 
-\section{Exercices}
+\section{Exercises}
 
-\begin{exercice}{\bf \em Une montgolfière\footnote{Problème extrait de "Analyse et commande de systèmes dynamiques" par F. Bonnans et P. Rouchon, Manuel de l' Ecole Polytechnique (France), édition de 2003.}}
+\begin{exercice}{\bf \em A hot-air ballon \footnote{Problem from "Analyse et commande de systèmes dynamiques"  by F. Bonnans et P. Rouchon, Manual of 'Ecole Polytechnique' (France), 2003 edition.}}
 
-
-On considère le modèle suivant pour une montgolfière : 
+We consider the following model for a hot-air ballon : 
 \eqnn
 \dot\theta &=& -\frac{1}{\tau_1}\theta + u\\
 \dot v &=&  -\frac{1}{\tau_2}v+\sigma\theta \\
