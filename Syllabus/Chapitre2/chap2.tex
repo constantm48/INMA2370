@@ -215,136 +215,110 @@ In the equation (\ref{mo2}), $\lambda$ is expressed as :
 \eqnn
 \lambda = \bar{J}\ddot{\bar{q}} + \bar{b}(q,\bar{q}) - \bar{B}(q,\bar{q})u.
 \eeqnn
-En substituant cette expression dans (\ref{mo1}) et en utilisant (\ref{red}), on obtient :
+By substituting this expression  in  (\ref{mo1}) and using (\ref{red}), it is resulted as :
 \begin{equation} \begin{split}
 J\ddot{q} + A(q)\bar{J}\ddot{\bar{q}} &+ b(q,\phi(q)) + A(q)\bar{b}(q,\phi(q)) \\
 &= (B(q,\phi(q)) + A(q)\bar{B}(q,\phi(q)))u \label{g1}.
 \end{split} \end{equation}
-Il ne reste plus alors qu'à éliminer $\ddot {\bar q}$. Pour cela on différencie deux
-fois l'expression (\ref{red}) :
+Last step to do is the elimination of $\ddot {\bar q}$. To obtain this product, it is needed to differentiate two times the expression (\ref{red}) :
 \eqn
 \dot {\bar q} &=& A^{T}(q)\dot q \\
 \ddot {\bar q}  &=& A^{T}(q)\ddot q + \dot A^T(q)\dot q. \label{ac}
 \eeqn
-En substituant cette dernière expression (\ref{ac}) dans (\ref{g1}) et en introduisant les
-notations suivantes :
+Substituting this last expression  (\ref{ac}) in (\ref{g1}) and introducing these following notations:
 \begin{equation*} \begin{split}
 M(q) &\triangleq J + A(q)\bar{J}A^{T}(q), \\
 f(q,\dot{q}) &\triangleq A(q)\bar{J}\dot{A}^{T}(q)\dot{q}, \\
 g(q) &\triangleq b(q,\phi(q)) + A(q)\bar{b}(q,\phi(q)), \\
 G(q) &\triangleq B(q,\phi(q)) + A(q)\bar{B}(q,\phi(q)),
 \end{split} \end{equation*}
-on obtient finalement le modèle dynamique général d'un système mécanique articulé 
-sous la forme suivante :
+The general dynamic model of an articulated mechanical system is finally obtained under this form :
 \eqn
 M(q)\ddot q + f(q,\dot q) + g(q) = G(q)u. \label{modmecgen}
 \eeqn
-\noindent Dans cette équation :
+\noindent In this equation :
 \begin{itemize}
-\item $q$ est le vecteur (de dimension $\delta$) des coordonnées nécessaires 
-à la description du système,
-\item $M(q)$ est la matrice d'inertie (de dimensions $\delta \times \delta$) symétrique et
-définie positive,
-\item $f(q,\dot{q})$ est le vecteur (de dimension $\delta$) qui représente les forces et
-les couples résultant des liaisons relatives aux contraintes; il peut aussi s'écrire 
-sous la forme 
+\item $q$ is the vector (of dimension $\delta$) of coordinates  necessary for the description of the systeme,
+\item $M(q)$ is the inertia matrix (of dimensions $\delta \times \delta$) symmetrical and defined positive,
+\item $f(q,\dot{q})$ is the vector (of dimension $\delta$) that represents forces and couples resulting  of relative liaisons  to constraints; it could also be written as 
 \eqnn
 f(q,\dot{q}) = C(q,\dot{q})\dot{q}
 \eeqnn
-où $C(q,\dot{q})$ est la matrice de dimensions $\delta \times \delta$ définie
-comme suit :
+where $C(q,\dot{q})$ is the matrix of dimensions $\delta \times \delta$ defined below :
 \eqnn
 C(q,\dot{q}) \triangleq A(q)\bar{J}\dot{A}^{T}(q),
 \eeqnn
-\item $g(q)$ est un vecteur (de dimension $\delta$) représentant les forces et les
-couples résultant de la gravité,
-\item $u$ est le vecteur (de dimension $m$) des forces et couples appliqués au système,
-\item $G(q)$ est une matrice cinématique de dimensions $\delta \times m$.
+\item $g(q)$ is a vector (of dimension $\delta$) representing forces and couples which resulting of gravity,
+\item $u$ is a vector (of dimension $m$) of forces and couples applied to the system ,
+\item $G(q)$ is a cinematic matrix of dimensions  $\delta \times m$.
 \end{itemize}
 
-\noindent Une fois le modèle dynamique général (\ref{modmecgen}) établi, il ne reste 
-qu'à en déduire le modèle d'état du système :
+\noindent Once the general dynamic model  (\ref{modmecgen}) established, the last step remaining is the deduction of the state model of the system :
 \begin{equation*} \begin{split}
 \dot{q} &= v, \\ 
 \dot{v} &= M^{-1}(q)[-f(q,v) - g(q) + G(q)u].
 \end{split} \end{equation*}
-Dans ces équations d'état, $q$ est le vecteur des coordonnées de position et 
-$v=\dot{q}$ est le vecteur des coordonnées de vitesse.
+In these state equations, $q$ is the coordinates vector of position and 
+$v=\dot{q}$ is the coordinates vector of speed.
 
-\begin{exemple} {\bf Modèle dynamique d'un robot manipulateur.}
+\begin{exemple} {\bf Dynamic model of a manipulator robot .}
 
-Un robot manipulateur est formé d'un ensemble de segments rigides 
-articulés.  Les articulations sont de type roto\"\i de ou de type
-prismatique.  Une articulation roto\"\i de permet un mouvement
-relatif de rotation entre deux segments.  Une articulation
-prismatique permet un mouvement relatif de translation entre deux
-segments.
+A manipulator robot is formed by a set of rigid articulated segments. There is two kinds of joints : the revolute joint and the prismatic joint. A revolute allows a relative movement of rotation between two segments. A prismatic joint allows a relative movement of translation between two segments. 
 
-Les robots sont actionnés par des moteurs encastrés produisant
-des forces de translation pour les articulations prismatiques et des
-couples de rotation pour les articulations roto\"\i des.
+Robots are operated by recessed engines producing translation forces for prismatic joints and rotation couples for revolute joints.
 
-Nous considérons le robot manipulateur représenté à la figure 
-\ref{Fig:robot} et formé d'un segment rigide se déplaçant horizontalement
-(corps 1) auquel est articulé un deuxième segment rigide pouvant effectuer un mouvement
-de rotation (corps 2). Le mouvement du système est provoqué par la force $F$ appliquée 
-horizontalement au premier segment et le couple de rotation $T$ appliqué au deuxième
-segment. Le repère inertiel et les  différentes coordonnées sont indiquées sur la figure.
+Let’s consider the manipulator robot represented in the figure 
+\ref{Fig:robot} formed by rigid segment 
+moving horizontally (body 1) which a second rigid segment is articulated. The second segment could perform a rotation movement (body 2). The movement of the system is due to the application of the force $F$ applied horizontally on the first segment and the couple of rotation $T$ applied on the second segment. The inertial basis and the different coordinates are indicated on the figure. 
+
 
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=8.5cm]{robot2}
-\caption{Modélisation d'un robot manipulateur}
+\caption{Modelisation of a manipulator robot}
 \label{Fig:robot}
 \end{center}
 \end{figure}
 
-Ce système est soumis aux contraintes suivantes :
+This system is subjected to these constraints  :
 \begin{description}
-\item {\em Contraintes de parcours :}
+\item {\em Course  constraints  :}
 \begin{equation*} \begin{split}
 y_1 &= 0, \\
 \theta_1 &= 0.
 \end{split} \end{equation*}
-\item {\em Contraintes de liaison :}
+\item {\em Liaison constraints   :}
 \begin{equation*} \begin{split}
 x_2 - b\sin\theta_2 - x_1 - a&= 0, \\
 y_2 + b\cos\theta_2 &= 0.
 \end{split} \end{equation*}
 \end{description}
-\noindent Les contraintes de parcours expriment le fait que le corps 1 ne peut se déplacer
-qu'horizontalement. Les contraintes de liaison expriment la relation existant
-entre les coordonnées cartésiennes des centres de masse des deux corps en raison
-de leur articulation. La matrice jacobienne des contraintes s'écrit comme suit :
+\noindent The course constraints show the fact that the body 1 can only have a horizontal movement. The liaison constraints express the relation existing between the Cartesian coordinates of the centers of mass of these two bodies due to their joint. The Jacobian matrix of constraints is written as followed :
 $$
 \bma{cccccc} 0 & 1 & 0 & 0 & 0 & 0 \\ 
 0 & 0 & 1 & 0 & 0 & 0\\ -1 & 0 & 0 & 1 & 0 & -b\cos\theta_2 \\
 0 & 0 & 0 & 0 & 1 & -b\sin\theta_2 \ema.
 $$
-On observe que cette matrice est de plein rang $\sigma = 4$ et donc que le système
-possède $\delta = 2$ degrés de liberté (comme on pouvait s'y attendre). On observe
-aussi que l'on peut définir la partition $(q,\bar{q})$ des coordonnées comme suit:
+It is observed that this matrix is a full row matrix  $\sigma = 4$ and so the system has $\delta = 2$ degrees of freedom ( as it is expected ). It is also observed that the partition $(q,\bar{q})$ can be described with this coordinates like:
 $$
 q = \bma{c} x_1 \\ \theta_2 \ema, \hh 
 \bar{q} = \bma{c} y_1 \\ \theta_1 \\ x_2 \\ y_2\ema.
 $$
-Il est aisé de vérifier que dans tout l'espace de configuration, les coordonnées 
-$\bar{q}$ peuvent s'exprimer comme une fonction explicite $\bar{q} = \phi(q)$ des 
-coordonnées $q$~:
+It is easy to verify that in all the configuration space, coordinates 
+$\bar{q}$ can be expressed as an explicit function  $\bar{q} = \phi(q)$ of coordinates  $q$~:
 \begin{align}
 y_1 &= 0, \label{c1} \\
 \theta_1 &= 0, \label{c2} \\
 x_2 &= x_1 + b\sin\theta_2 + a, \label{c3} \\
 y_2 &= - b\cos\theta_2. \label{c4}
 \end{align}
-On pourra donc éliminer les coordonnées $\bar{q}=(y_1, \theta_1, x_2, y_2)^{T}$ de la
-description du système et ne conserver que les coordonnées $q=(x_1, \theta_2)^{T}$.
-La matrice $A(q)$ s'écrit :
+It is now possible to eliminate the coordinates  $\bar{q}=(y_1, \theta_1, x_2, y_2)^{T}$ of the description of the system and just keep the coordinates $q=(x_1, \theta_2)^{T}$.
+The matrix $A(q)$ is written :
 $$  
 A(q) = (\frac{\partial \phi}{\partial q})^{T} = \bma{cccc} 0 & 0 & 1 & 0 \\ 
 0 & 0 & b\cos\theta_2 & b\sin\theta_2 \ema
 $$  
-Les équations du mouvement s'écrivent :
+The movement equations are written  :
 \begin{align}
 m_1\ddot x_1 &= F - \lambda_3, \label{eqmo1}\\
 I_2\ddot \theta_2 &= - \lambda_3b\cos\theta_2 - \lambda_4b\sin\theta_2 
@@ -354,33 +328,31 @@ I_1\ddot \theta_1 &= \lambda_2, \label{eqmo4}\\
 m_2\ddot x_2 &= \lambda_3, \label{eqmo5}\\
 m_2\ddot y_2 &= -m_2g_0 + \lambda_4. \label{eqmo6}
 \end{align}
-En combinant les contraintes (\ref{c1}), (\ref{c2}) avec les équations du mouvement
-(\ref{eqmo3}), (\ref{eqmo4}) on déduit les valeurs suivantes de $\lambda_1$ et $\lambda_2$ :
+By combining constraints  (\ref{c1}), (\ref{c2}) ) with the movement equations
+(\ref{eqmo3}), (\ref{eqmo4}) the following values  $\lambda_1$ et $\lambda_2$are deducted :
 $$
 \lambda_1 = m_1g_0,\hd \lambda_2 =0.
 $$
-Ces valeurs expriment les forces de liaison appliquées aux deux corps pour satisfaire
-les contraintes de parcours le long du mouvement du système.
+These values express the liaison forces applied on the two bodies to satisfy the course constraints along the movement system. 
 
-D'autre part, en éliminant $\lambda_3$ et $\lambda_4$ entre les équations du mouvement
-(\ref{eqmo1}), (\ref{eqmo2}), (\ref{eqmo5}), (\ref{eqmo6}), on obtient :
+Moreover, by suppressing  $\lambda_3$ et $\lambda_4$ between the movement equations
+(\ref{eqmo1}), (\ref{eqmo2}), (\ref{eqmo5}), (\ref{eqmo6}), this result is obtained:
 \eqn
 \bma{c} m_1\ddot x_1 \\ I_2\ddot \theta_2 \ema + \bma{cc} 1 & 0 \\ b\cos \theta_2
 & b\sin \theta_2 \ema \bma{c} m_2\ddot x_2 \\ m_2\ddot y_2 \ema = 
 \bma{c} F \\ T - bm_2g_0\sin\theta_2 \ema. \nonumber \\ \label{t1} 
 \eeqn
-En dérivant deux fois les contraintes (\ref{c3}), (\ref{c4}), on obtient :
+By derivating two times the constraints  (\ref{c3}), (\ref{c4}), the result is obtained :
 \eqn
 \bma{c} m_2\ddot x_2 \\ m_2 \ddot y_2 \ema = \bma{cc} 1 & b\cos\theta_2 \\ 0 & 
 b\sin\theta_2 \ema \bma{c} m_2\ddot x_1 \\ m_2\ddot \theta_2 \ema + 
 m_2b {\dot \theta_2}^2 \bma{c} -\sin\theta_2 \\ \cos\theta_2 \ema. \label{t2}
 \eeqn
-En substituant (\ref{t2}) dans (\ref{t1}), on obtient finalement le modèle du système
-sous la forme désirée :
+By substituting  (\ref{t2}) in (\ref{t1}), the model of the system is obtained under the desired form:
 \eqn
 M(q)\ddot{q} + C(q,\dot{q})\dot{q} + g(q) = G(q)u,  \label{eqmouv}
 \eeqn
-avec
+with
 \begin{equation*} \begin{split}
 M(q) &= \bma{cc} m_1 + m_2 & m_2b\cos\theta_2 \\ m_2b\cos\theta_2 & I_2 + m_2b^2 \ema, \\
 C(q,\dot{q}) &= \bma{cc} 0 & -m_2b\dot \theta_2 \sin\theta_2 \\ 0 & 0 \ema, \\
@@ -390,58 +362,43 @@ G(q)u &= \bma{c} F \\ T \ema. \end{split} \end{equation*}
 
 \end{exemple}
 
-\section{Propriétés de la matrice d'inertie}
+\section{Properties of the inertia matrix }
 
 \begin{enumerate}
-\item La matrice d'inertie $M(q)$ est symétrique et définie positive. En effet, elle est
-la somme d'une matrice diagonale $J$ dont les éléments sont positifs et d'une
-matrice symétrique et semi-définie positive $A(q)\bar{J}A^{T}(q)$.
-\item La dérivée temporelle de la matrice d'inertie $\dot M(q)$ vérifie la relation suivante :
+\item The inertia matrix $M(q)$ is symmetrical and defined positive. Indeed, this matrix is the sum of a diagonal matrix $J$ whose the elements are positive and a matrix symmetrical and semi-defined positive $A(q)\bar{J}A^{T}(q)$.
+\item The temporal derivative of the inertia matrix$\dot M(q)$ verifies this following relation:
 \begin{equation*} \begin{split}
 \dot M(q) &= A(q)\bar{J}\dot A^{T}(q) + \dot A(q)\bar{J}A^{T}(q),  \\
 &= C(q,\dot q) + C^T(q,\dot q). \label{prop2}
 \end{split} \end{equation*}
-Cette relation implique que la matrice
+This relation involves that the matrix 
 \eqn
 \dot M(q) - 2C(q,\dot q) \label{prop1}
 \eeqn
-est antisymétrique.
-\item La matrice d'inertie $M(q)$ vérifie la relation suivante :
+is anti-symmetric.
+\item 	The inertia matrix $M(q)$ verifies the following relation :
 \eqn
 \frac{\partial}{\partial q}(\dot q^T M(q) \dot q) = \dot q^T C(q, \dot q). \label{prop2}
 \eeqn
-La vérification de cette expression est laissée à titre d'exercice.
+The verification of this expression is left as an exercise.
 \end{enumerate}
 
 
-\section{Articulations élastiques}
+\section{Elastic joints}
 
-Nous avons considéré jusqu'à présent des systèmes mécaniques articulés formés 
-uniquement de corps rigides sans possibilité de flexibilité ou de souplesse dans les 
-liaisons et les articulations. Une telle hypothèse n'est pas réaliste dans de nombreuses 
-applications. Une manière simple d'introduire de la souplesse dans les articulations 
-d'un système mécanique articulé est de placer un petit ressort (fictif) de masse nulle 
-dans les liaisons entre corps comme indiqué sur la figure \ref{Fig:flexiart}. Ce ressort 
-exerce une force de rappel sur chacun des deux corps auxquels il est attaché. Cette force 
-s'applique au point de fixation du ressort et est une fonction monotone croissante de 
-l'élongation du ressort. Elle s'ajoute aux autres forces appliquées au système dans 
-l'écriture des équations du mouvement. Lorsque de l'élasticité est ainsi introduite 
-dans une articulation entre deux corps du système, il va de soi que la ou les contraintes 
-de liaison correspondantes disparaissent et que le nombre de degrés de liberté est
-augmenté corrélativement. Nous illustrons la méthode sur un exemple 
-simple d'un système à deux corps. 
+Until this moment, it has always been considered that articulated mechanic systems were formed only by rigid bodies without possibilities of flexibility or of suppleness in the liaisons and the joints. But a such hypothesis is not realistic in numerical applications. A simple way to introduce suppleness in the joints of a articulated mechanic system is to place a small spring (fictive) massless in the liaisons between bodies as shown in the figure \ref{Fig:flexiart}. The spring exerts a restoring force on each bodies where the spring is attached. This force is applied on the fixation point of the spring, and is a monotonically increasing function of the spring elongation. This force is added on the other forces applied on the system in the writing of the movement equations. When the elasticity is thus introduced in a joint of two bodies of the system, It seems to be logical that where the constraints of corresponding liaisons disapear, and that the number of degrees of freedom is correlatively increased. The method is illustrated on a simple example of a double bodies system. 
 
-\begin{exemple} {\bf Système à deux corps avec une articulation élastique.}
+\begin{exemple} {\bf Two bodies system with an elastic joint .}
 
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=3in]{flexiart}
-\caption{Modélisation d'une articulation élastique}
+\caption{Elastic joint modelisation }
 \label{Fig:flexiart}
 \end{center}
 \end{figure}
-Nous considérons le système à deux corps représenté sur la figure \ref{Fig:flexiart}.
-Les équations du mouvement des deux corps s'écrivent comme suit~:
+Let's consider the two bodies system represented on the figure  \ref{Fig:flexiart}.
+The movement equations of the two bodies are written as follow~:
 \begin{align}
 m_1\ddot x_1 &= F_1, \label{eqmou1}\\
 m_1\ddot y_1 &= F_2, \\
@@ -450,24 +407,21 @@ m_2\ddot x_2 &= - F_1, \\
 m_2\ddot y_2 &= - F_2, \\
 I_2\ddot \theta_2 &=  F_1d_2\sin\theta_2 - F_2d_2\cos\theta_2, \label{eqmou6}
 \end{align}
-où $F_1$ et $F_2$ désignent les amplitudes des composantes des forces de rappel 
-appliquées aux deux corps en raison de la présence du ressort.  
+where $F_1$ and $F_2$ indicate the amplitudes  of the components of the restoring forces applied on two bodies due to the presence of the spring. 
 
-Les coordonnées cartésiennes des points de fixation du ressort sur les deux corps
-s'expriment comme suit :
+The cartesian coordinates of the fixation points of the spring on the two bodies are expressed like this :
 \begin{align*}
 \tilde x_1 &= x_1 + d_1\cos\theta_1, \\
 \tilde x_2 &= x_2 - d_2\cos\theta_2, \\
 \tilde y_1 &= y_1 + d_1\sin\theta_1, \\
 \tilde y_2 &= y_2 - d_2\sin\theta_2. 
 \end{align*}
-L'élongation du ressort est définie comme le vecteur de composantes $\epsilon_1$ et 
+The elongation of the spring is defined as the vector of components  $\epsilon_1$ and 
 $\epsilon_2$ :
 \eqnn
 \epsilon_1 = \tilde{x}_2 - \tilde{x}_1 \hspace{10mm} \epsilon_2 = \tilde{y}_2 - \tilde{y}_1
 \eeqnn
-Les forces de rappel $F_1$ et $F_2$ sont modélisées comme des fonctions monotones 
-croissantes des composantes de l'élongation (voir Figure \ref{Fig:forcelong})~:
+The restoring forces $F_1$ et $F_2$ are modeled as monotone increasing functions of composents of the elongation (see Figure \ref{Fig:forcelong})~:
 \eqnn
 F_1 = r(\epsilon_1) \hspace{10mm} F_2 = r(\epsilon_2)
 \eeqnn
@@ -475,17 +429,16 @@ F_1 = r(\epsilon_1) \hspace{10mm} F_2 = r(\epsilon_2)
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=4cm]{forcelong}
-\caption{Articulations élastiques : force de rappel en fonction de l'élongation}
+\caption{elastic joints : restoring force with respect to the elongation }
 \label{Fig:forcelong}
 \end{center}
 \end{figure}
-Souvent, pour des raisons de simplicité, on adopte un modèle linéaire c-à-d:
+Often, for some simplification reasons,the linear model is adopted, ie :
 \begin{align*}
 F_1 &= k_0(\tilde x_2 - \tilde x_1) = k_0((x_2 - x_1) - (d_1\cos\theta_1 + d_2\cos\theta_2)), \\
 F_2 &= k_0(\tilde y_2 - \tilde y_1) = k_0((y_2 - y_1) - (d_1\sin\theta_1 + d_2\sin\theta_2)),
 \end{align*}
-où la constante $k_0$ est appelée {\em constante de rappel} du ressort. Dans ce cas, les 
-équations du mouvement (\ref{eqmou1})-(\ref{eqmou6}) se réécrivent comme suit:
+where the constant $k_0$ is called {\em spring constant}. In this case, the movement equations  (\ref{eqmou1})-(\ref{eqmou6}) are rewritten as follows:
 \begin{align*}
 m_1\ddot x_1 &= k_0((x_2 - x_1) - (d_1\cos\theta_1 + d_2\cos\theta_2)), \\
 m_1\ddot y_1 &= k_0((y_2 - y_1) - (d_1\sin\theta_1 + d_2\sin\theta_2)), \\
@@ -498,149 +451,116 @@ I_2\ddot \theta_2 &=  k_0d_2((x_2 - x_1 - d_1\cos\theta_1 - d_2\cos\theta_2)\sin
 \end{align*}
 \end{exemple}
 
-Cet exemple montre que dans le cas d'un système mécanique articulé, le modèle dynamique 
-général (\ref{modmecgen}) est modifié comme suit :
+This example shows that in the case of mechanic articulated system,the general dynamic model  (\ref{modmecgen}) is modified as :
 \eqn
 M(q)\ddot{q} + f(q,\dot{q}) + g(q) + k(q) = G(q)u \label{modgenflex}
 \eeqn
-où apparaît le terme additionnel $k(q)$ qui représente l'effet des forces de rappel
-du à la présence d'articulations élastiques dans le système.
+where appears the additional term $k(q)$ representing the effect of restoring forces due to the presence of elastic joints in the system.
 
-\section{Frottement}
-\markboth{{\bf \hspace*{5mm}Chapitre 2 }\hfill Systèmes mécaniques articulés}
-{{ \bf Sec. \thesection }\hfill Frottement\hspace*{5mm}} 
+\section{Friction}
+\markboth{{\bf \hspace*{5mm}Chapitre 2 }\hfill Articulated mechanical systems}
+{{ \bf Sec. \thesection }\hfill Friction\hspace*{5mm}} 
 
-La présence de forces de frottement est un autre phénomène physique que nous avons 
-négligé jusqu'ici et qui a souvent un effet important sur le mouvement 
-des systèmes mécaniques. En particulier, dans le cas d'articulations élastiques
-modélisées comme dans la section précédente, la présence d'un amortissement 
-par le frottement est indispensable si l'on veut éviter de développer des modèles 
-qui soient le siège d'oscillations persistantes peu conformes à la réalité 
-expérimentale.
+The presence of friction forces is another physic phenomenon that was neglected until this moment and that is often an important effect on the movement of mechanic systems. In particular, in the case of elastic joints modeled like in the precedent section, the presence of an damping by the friction is essential to avoid the developing of models that would be the oscillations centers which are not really conform to the experiment reality.
 
-Il y a plusieurs manières d'introduire le frottement dans la description d'un système
-mécanique articulé. Nous retiendrons ici la plus simple qui consiste à supposer
-que le mouvement de chacune des coordonnées $q_i$ du vecteur des coordonnées 
-généralisées $q = (q_1, q_2, \hdots , q_\delta)$ est affecté par une force de frottement
-séparée ne dépendant que de la vitesse $(\dot{q_i})$ de cette même coordonnée et
-notée $h_i(\dot{q_i})$. Le vecteur de ces forces de frottement est lui même noté
+There are many ways to introduce the friction in the description of a mechanic articulated system. We will retain here the most simple description supposing  that the movement of each coordinates  $q_i$ of the vector of generalized coordinates  $q = (q_1, q_2, \hdots , q_\delta)$ ,…) is affected by a separated friction force only depending of the speed  $(\dot{q_i})$ of this same coordinate and denoted $h_i(\dot{q_i})$. The vector of these friction forces is written   
 $$
 h(\dot{q}) = \bma{c} h_1(\dot{q_1}) \\ h_2(\dot{q_2}) \\ \vdots \\ h_{\delta}(\dot{q_\delta}) \ema
 $$
-de sorte que le modèle dynamique général (\ref{modgenflex}) est augmenté comme suit :
+in order that the general dynamic model (\ref{modgenflex}) is increased as follows  :
 $$
 M(q)\ddot{q} + f(q,\dot q) + g(q) + k(q) + h(\dot{q}) = G(q)u. \label{modgenflexfrot}
 $$
-La forme la plus courante des fonctions $h_i(\dot q_i)$ est la suivante :
+The most common form of the functions $h_i(\dot q_i)$ est is this one :
 $$
 h_i(\dot q_i) = \alpha_{i}\mbox{sign}(\dot q_i) + \beta_i(\dot q_i).
 $$
-Dans cette équation le premier terme $\alpha_{i}\mbox{sign}(\dot q_i)$ représente le frottement
-sec tandis que le deuxième terme $\beta_i(\dot q_i)$ représente le frottement
-visqueux. Le coefficient $\alpha_i$ est constant. La fonction $\beta_i$ est monotone croissante avec $\beta(0) = 0$. On remarquera que la fonction $h$ est discontinue à l'origine, ce
-qui peut entrainer des difficultés pour la simulation et l'analyse du système. Dans les applications qui seront considérées dans ce livre, sauf indication contraire, nous supposerons que le frottement sec est négligé ($\alpha_i = 0$).
+In this equation, the first term  $\alpha_{i}\mbox{sign}(\dot q_i)$ represents the dry friction while the second term $\beta_i(\dot q_i)$ represents the viscous friction. The $\alpha_i$ coefficient is constant. The function $\beta_i$ is monotonically increasing with $\beta(0) = 0$. It is noticed that the function $h$ is discontinuous at the origin, 
+that can involve difficulties for the simulation and the analysis of the system. In the applications that will be considered in this book, except inverse indication, it is supposed that the dry friction is neglected ($\alpha_i = 0$).
 
-\section{Energie et équation d'Euler-Lagrange} 
+\section{Energy and Euler-Lagrange equation} 
 
-L'énergie cinétique $E_C$ d'un système mécanique articulé est définie comme suit~:
+The kinetic energy $E_C$ of a articulated mechanic system is defined as ~:
 $$
 E_C(q,\dot q) =  \frac{1}{2} \dot q^T M(q) \dot q.
 $$
-L'énergie potentielle $E_P$ est une primitive de la somme des forces dérivant d'un
-potentiel, c'est à dire les forces de gravité et les forces de rappel des ressorts~:
+The potential energy  $E_P$ is the primitive of the sum of forces deriving of a potential, to be more precise, gravity forces and restoring forces of springs ~:
 $$
 \frac{\partial E_P(q)}{\partial q} = g^T(q) + k^T(q).
 $$
-L'énergie totale $E_T$ est la somme de l'énergie cinétique et de l'énergie potentielle :
+The total energy $E_T$ is the sum of the kinetic and potential energy :
 $$
 E_T = E_C + E_P.
 $$
-L'évolution de l'énergie totale au cours du mouvement du système est examinée en
-calculant sa dérivée temporelle :
+The evolution of the total energy during the movement of the system is examined by calculating his temporal derivative :
 \begin{equation} \begin{split}
 \dot E_T &= \frac{\partial E_C}{\partial \dot q}\ddot q + \frac{\partial E_C}{\partial q}\dot q
 + \frac{\partial E_P}{\partial q}\dot q \\
 &= \dot q^T [M(q) \ddot q + \frac{1}{2} \dot M(q) \dot q + g(q) + k(q)].
 \end{split} \end{equation}
-En substituant l'expression de $M(q)\ddot q$ extraite de l'équation générale du mouvement
-(\ref{eqmouv}), on obtient :
+By substituting the expression  $M(q)\ddot q$ extracted of the general equation of the movement 
+(\ref{eqmouv}), this result is obtained :
 $$
 \dot E_T = \frac{1}{2} \dot q^T [\dot M(q) - 2C(q,\dot q)] \dot q + \dot q^T [G(q)u - h(\dot q)].
 $$
-Le premier terme du membre de droite de cette équation est nul car la matrice $\dot M(q) - 2C(q,\dot q)$
-est antisymétrique (voir plus haut). Il reste donc :
+The first term of the right member of this equation is equal to zero because the matrix  $\dot M(q) - 2C(q,\dot q)$
+is anti-symmetrical (see above). It remains :
 $$
 \dot E_T = \dot q^T [G(q)u - h(\dot q)].
 $$
-Lorsque le système n'est soumis à aucune autre force que celles qui dérivent d'un
-potentiel, l'énergie totale est constante tout au long du mouvement :
+When the system is not subjected by any other forces than forces deriving of a potential, the total energy is constant during the entire movement :
 $$
 G(q)u - h(\dot q) = 0 \hspace{5mm} \Rightarrow \hspace{5mm} \dot E_T = 0.
 $$
-Dans ce cas, on dit que le système est {\em conservatif}.
+In this case, It is said that the system is  {\em conservative }.
 
-En utilisant les propriétés (\ref{prop1}) et (\ref{prop2}), on vérifie aussi que l'énergie
-cinétique satisfait la relation suivante :
+By using proprieties (\ref{prop1}) and (\ref{prop2}), it is verified that the kinetic energy satisfied this following relation:
 \eqnn
 \frac{d}{dt}(\frac{\partial E_C}{\partial \dot q})^T - (\frac{\partial E_C}{\partial q})^T = 
 M(q)  \ddot q + C(q, \dot q) \dot q.
 \eeqnn
-Il s'en suit qu'une expression alternative de l'équation générale du mouvement (\ref{eqmouv})
-est donnée par l'expression :
+this results in a alternative expression of the general movement equation (\ref{eqmouv})
+is given by the expression :
 \eqnn
 \frac{d}{dt} (\frac{\partial L(q, \dot q)}{\partial \dot q})^T - (\frac{\partial L(q, \dot q)}
 {\partial q})^T = G(q)u - h(\dot q)
 \eeqnn
-avec :
+with :
 \eqnn
 L(q, \dot q) \triangleq E_C(q, \dot q) - E_P(q, \dot q).
 \eeqnn
-Cette équation porte généralement le nom d'{\em équation d'Euler-Lagrange} et la
-quantité $L(q, \dot q)$ est appelée {\em Lagrangien} du système.
+This equation is generally called the {\em Euler-Lagrange equation} and the quantity  $L(q, \dot q)$ is called {\em Lagrangien} of the system.
 
-\section{Systèmes non-holonomes}
+\section{Nonholonomic  system }
 
-Les systèmes non-holonomes sont des systèmes mecaniques articulés dont
-les contraintes de parcours peuvent dépendre non seulement des positions
-$q$ mais aussi des vitesses $\dot q$. Lorsque ces contraintes ne
-peuvent etre intégrées pour produire des contraintes de parcours qui
-dépendent exclusivement des coordonnées de configuration, elles sont
-appel\'ees {\it non-holonomes}. Cette situation se pr\'esente dans de
-nombreuses applications pratiques, notamment dans le
-domaine de l'automobile, dans le domaine a\'eronautique et en
-robotique. Nous consid\'erons le cas particulier d'un
-syst\`eme ayant $\delta$ degr\'es de libert\'e qui est soumis \`a
-$m$ contraintes non-holonomes ind\'ependantes ($m < \delta$) qui sont  
-lin\'eaires par rapport aux vitesses :
+The nonholonomics  systems are articulated mechanic systems for which course constraints can non only depend  of positions 
+$q$ but also speeds $\dot q$. When these constraints can not  be integrated to produce course constraints which depend exclusively of configuration coordinates, there are called {\it nonholonomic}. This situation is produced under various practical applications, more specifically in automotive, robotic and aviation industry.  We consider the particular case of one specific having $\delta$ degrees of freedom which is subjected to 
+$m$ nonholomics independent constraints ($m < \delta$) which are linear with respect to speeds :
 $$
 N^T(q) \dot q = 0
 $$
-avec la matrice $N^T(q)$ de dimensions $(m \times \delta)$ et de plein rang.
-Définissons la matrice $S(q)$, de dimensions $\delta \times (\delta - m)$ et de
-plein rang, telle que :
+with the full row matrix $N^T(q)$ of dimensions $(m \times \delta)$. 
+The matrix $S(q)$, of dimensions $\delta \times (\delta - m)$ and of full row is defined as :
 \eqnn
 N^T(q)S(q)=0.
 \eeqnn
-Les contraintes sont \'equivalentes au fait que le vecteur des vitesses
-$\dot q$ appartient \`a l'espace engendr\'e par les colonnes de la matrice
-$S(q)$ ou, autrement dit, qu'il existe un vecteur $\eta$ de dimension
-$(\delta-m)$ tel que :
+The constraints are equivalents to the fact that the vector of speeds 
+$\dot q$ belongs to the space generated by the columns of the matrix 
+$S(q)$ or, in another way,  there is a vector $\eta$ of dimension
+$(\delta-m)$ as:
 \eqn
 \dot q = S(q) \eta. \label{modcin}
 \eeqn
-Les \'equations du mouvement s'\'ecrivent sous la forme standard :
+The movement equations are written under the standard form  :
 \eqnn
 M(q) \ddot{q} + f(q, \dot q) + g(q) + N(q)\lambda = G(q) u,
 \eeqnn
-en y ajoutant le terme $N(q)\lambda$ qui repr\'esente les forces de liaison
-qui garantissent que les contraintes sont satisfaites le long du
-mouvement (voir section 1.2.3). On \'elimine les multiplicateurs de
-Lagrange $\lambda$ en pr\'emultipliant cette \'equation par $S^T(q)$:
+by adding the term  $N(q)\lambda$ 
+mouvement that represents the liaison forces which guarantee that the constraints are satisfied along the movement (see section 1.2.3). By suppressing the Lagrange multipliers On  $\lambda$ and by pre-multiplying this equation by $S^T(q)$:
 \eqnn
 S^T(q)M(q) \ddot{q} + S^T(q)[C(q, \dot q) \dot q + g(q)] = S^T(q)G(q)u.
 \eeqnn
-Finalement, en utilisant la relation (\ref{modcin}), on
-obtient l'expression :
+Finally, by using the relation (\ref{modcin}), this expression is obtained:
 \eqn
 J(q) \dot \eta + F(q, \eta) = S^T(q)G(q)u \label{moddyn}
 \eeqn
@@ -650,42 +570,45 @@ J(q) &=& S^T(q)M(q)S(q) \\
 F(q, \eta) &=& S^T(q) M(q) \{ [\partial_q S(q)] S(q) \eta \} \eta +
 S^T(q)f(q, S(q) \eta).
 \eeqnn
-Le mod\`ele dynamique g\'en\'eral d'un syst\`eme non-holonome est ainsi
-constitu\'e
-des \'equations (\ref{modcin}) et (\ref{moddyn}) que l'on peut \'ecrire sous
-la forme d'un mod\`ele d'\'etat:
+The general dynamic model of a nonholonomic system consists in equation  (\ref{modcin}) and (\ref{moddyn}) that we can write under a state model:
 \eqnn
 \dot q &=& S(q) \eta \\
 \dot \eta &=& J^{-1}(q) [ -F(q, \eta) + S^T(q)G(q) u ].
 \eeqnn
-On observe que le vecteur d'\'etat :
+We can observe that the state vector :
 \eqnn
 \bma{c} q \\ \eta \ema
 \eeqnn
-est de dimension $(2\delta-m)$ avec les coordonn\'ees $\eta$ homog\`enes \`a
-des vitesses. 
+is of dimension $(2\delta-m)$ with coordinates $\eta$ homogeneous to speeds. 
+
 
 \section{Exercices}
 
-\begin{exercice}{\bf \em Robots manipulateurs}
+%\begin{exercice}{\bf \em Robots manipulateurs}
+\begin{exercice}{\bf \em \blue{Technician} robots}
 
-On a représenté à la figure \ref{Fig:exe-robot} trois configurations de robots
-planaires à deux degrés de liberté.  Pour chacune de ces
-configurations~:
+%On a représenté à la figure \ref{Fig:exe-robot} trois configurations de robots
+%planaires à deux degrés de liberté.  Pour chacune de ces
+%configurations~:
+Figure \ref{Fig:exe-robot} represents tree configurations of planar robots. For each of this configurations~:
 \begin{enumerate}
-\item Etablir le modèle dynamique du système et le modèle
-d'état correspondant.  Expliciter les matrices $M(q), C(q,\dot q)$
-et $G(q)$ ainsi que le vecteur $g(q)$.
-\item Vérifier que le modèle est conservatif et qu'il satisfait l'équation
-d'Euler-Lagrange.
-\item Indiquer comment se modifient les équations du modèle si
-les segments sont soumis à un frottement visqueux proportionnel au
-carré de la vitesse. \qed
+%\item Etablir le modèle dynamique du système et le modèle
+%d'état correspondant.  Expliciter les matrices $M(q), C(q,\dot q)$
+%et $G(q)$ ainsi que le vecteur $g(q)$.
+\item Establish the dynamic model of the system and the corresponding state model. Make explicit the matrices $M(q), C(q,\dot q)$ and $G(q)$, and the vector $g(q)$.
+%\item Vérifier que le modèle est conservatif et qu'il satisfait l'équation
+%d'Euler-Lagrange.
+\item Check that the model is conservative and that it satisfies Euler-Lagrange equation.
+%\item Indiquer comment se modifient les équations du modèle si
+%les segments sont soumis à un frottement visqueux proportionnel au
+%carré de la vitesse. \qed
+\item Indicate how the equations of the model are modified if the segments are subjected to a viscous friction proportional to the square of the speed. \qed 
 \end{enumerate}
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=3.5in]{exe-robot}
-\caption{Configurations de robots manipulateurs planaires}
+%\caption{Configurations de robots manipulateurs planaires}
+\caption{Configurations of \blue{technician} planar robots}
 \label{Fig:exe-robot}
 \end{center}
 \end{figure}
@@ -694,136 +617,175 @@ carré de la vitesse. \qed
 \begin{figure}[!h]
 \begin{center}
 \includegraphics[width=8cm]{exe-fusee}
-\caption{Fusée à moteur orientable}
+%\caption{Fusée à moteur orientable}
+\caption{Rocket with \blue{adjustable} motor}
 \label{Fig:exe-fusee}
 \end{center}
 \end{figure}
-\begin{exercice}{\bf \em Modélisation de la dynamique d'une fusée}
+%\begin{exercice}{\bf \em Modélisation de la dynamique d'une fusée}
+\begin{exercice}{\bf \em Modelling of the dynamics of a rocket}
 
-On considère une fusée propulsée par un moteur à réaction
-orientable comme indiqué sur la figure \ref{Fig:exe-fusee} et se dépla\c
-cant dans un plan vertical.  L'orientation du moteur est pilotée
-par un actionneur hydraulique fournissant un couple $T$.  Le moteur
-lui-même fournit une force de propulsion $F$.
+%On considère une fusée propulsée par un moteur à réaction
+%orientable comme indiqué sur la figure \ref{Fig:exe-fusee} et se dépla\c
+%cant dans un plan vertical.  L'orientation du moteur est pilotée
+%par un actionneur hydraulique fournissant un couple $T$.  Le moteur
+%lui-même fournit une force de propulsion $F$.
+Let's consider a rocket propelled by an \blue{adjustable} jet engine as indicated on figure \ref{Fig:exe-fusee} and moving in a vertical plane. The engine orientation is controlled by a hydraulic \blue{actuator} providing a torque $T$. The engine itself provides a propelling force $F$ .
 \begin{enumerate}
-\item Etablir les équations du modèle d'état du système,
-sous l'hypothèse que les deux parties de la fusée (corps
-principal et moteur) sont des corps rigides de masse constante. \qed
+%\item Etablir les équations du modèle d'état du système,
+%sous l'hypothèse que les deux parties de la fusée (corps
+%principal et moteur) sont des corps rigides de masse constante. \qed
+\item Establish the equations of the state model of the system, assuming that the two parts of the rocket (main body and engine) are rigid bodies of constant mass. \qed
 \end{enumerate}
 \end{exercice}
 
-\begin{exercice}{\bf \em Modélisation dynamique du module d'excursion
-lunaire}
+%\begin{exercice}{\bf \em Modélisation dynamique du module d'excursion
+%lunaire}
+\begin{exercice}{\bf \em Dynamic modelling of the lunar excursion module}
 
-Lors de la mission Apollo 11, les astronautes Armstrong et Aldrin
-se sont posés sur la lune au moyen du LEM (Lunar
-Excursion Module; Fig. \ref{Fig:exe-lem}).  On considère les hypothèses de
-modélisation suivantes :
+%Lors de la mission Apollo 11, les astronautes Armstrong et Aldrin
+%se sont posés sur la lune au moyen du LEM (Lunar
+%Excursion Module; Fig. \ref{Fig:exe-lem}).  On considère les hypothèses de
+%modélisation suivantes :
+During the Apollo 11 mission, astronauts Armstrong and Aldrin landed on the moon using the LEM (Lunar Excursion Module; Fig. \ref{Fig:exe-lem}). We consider the following model assumptions : 
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=2in]{exe-lem}
-\caption{Module d'excursion lunaire}
+%\caption{Module d'excursion lunaire}
+\caption{Lunar Excursion Module}
 \label{Fig:exe-lem}
 \end{center}
 \end{figure}
 \begin{itemize}
-\item[a)] le LEM est un corps rigide
-\item[b)] le mouvement est vertical
-\item[c)] les forces agissant sur le système sont la poussée $F$
-et l'attraction lunaire
-\item[d)] la masse de combustible embarqué constitue une partie
-importante (non négligeable) de la masse totale du LEM
-\item[e)] la masse de combustible consommée par unité de
-temps est proportionnelle à $F$.
+%\item[a)] le LEM est un corps rigide
+\item[a)] the LEM is a rigid body
+%\item[b)] le mouvement est vertical
+\item[b)] the movement is vertical
+%\item[c)] les forces agissant sur le système sont la poussée $F$
+%et l'attraction lunaire
+\item[c)] the forces acting on the system are the thrust $F$ and the lunar attraction
+%\item[d)] la masse de combustible embarqué constitue une partie
+%importante (non négligeable) de la masse totale du LEM
+\item[d)] the mass of fuel onboard is an
+important (non negligible) part of the total mass of the LEM
+%\item[e)] la masse de combustible consommée par unité de
+%temps est proportionnelle à $F$.
+\item[e)] the mass of fuel consumed per unit of time is proportional to $F$.
 \end{itemize}
 \begin{enumerate}
-\item Etablir un modèle d'état du système qui satisfait ces
-hypothèses de modélisation.
-\item Quelles sont les principales limites de validité de ce
-modèle ? \qed
+%\item Etablir un modèle d'état du système qui satisfait ces
+%hypothèses de modélisation.
+\item Establish a state model of the system that satisfies these
+modelling assumptions.
+%\item Quelles sont les principales limites de validité de ce
+%modèle ? \qed
+\item What are the main limits of validity of this
+model ? \qed
 \end{enumerate}
 \end{exercice}
 \vv
 
-\begin{exercice}{\bf \em Un train pendulaire}
+%\begin{exercice}{\bf \em Un train pendulaire}
+\begin{exercice}{\bf \em A pendular train}
 
-Un train pendulaire est un train qui peut se déplacer à
-très grande vitesse dans les virages sans qu'il soit nécessaire
-d'incliner les voies. 
+%Un train pendulaire est un train qui peut se déplacer à
+%très grande vitesse dans les virages sans qu'il soit nécessaire
+%d'incliner les voies. 
+A pendular train is a train that can move at very high speed in bends without the need of inclining the rails.
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=7cm]{train2}
 \includegraphics[width=5cm]{trainpendulaire}
-\caption{Un train pendulaire}
+%\caption{Un train pendulaire}
+\caption{A pendular train}
 \label{Fig:train}
 \end{center}
 \end{figure}
 \begin{figure}[!h]
 \begin{center}
 \includegraphics[width=3in]{exe-camion}
-\caption{Modélisation de la dynamique d'un camion}
+%\caption{Modélisation de la dynamique d'un camion}
+\caption{Modelling of the dynamics of a truck}
 \label{Fig:exe-camion}
 \end{center}
 \end{figure}
-Pour cela chaque voiture est munie d'un dispositif
-actif qui applique une force verticale à la caisse de la voiture pour
-contrebalancer l'effet de la force \og centrifuge \fg. Ceci est illustré sur
-la figure \ref{Fig:train} où une section de la caisse d'une voiture est
-représentée schématiquement avec $F_g$ la force de gravité
-(appliquée au centre de masse $G$), $F_c$ la force "centrifuge" et
-$F_a$ la force appliquée. On suppose que la ligne d'action de la force
-$F_a$ est verticale quelle que soit la position angulaire $\theta$ de la
-caisse. D'autre part la suspension de la voiture est schématisée par
-un ressort vertical qui exerce une force proportionnelle à son
-élongation. Le point d'application
-$P$ du ressort est {\it contraint de se déplacer verticalement}.
-Etablir un modèle d'état du système. \qed
+%Pour cela chaque voiture est munie d'un dispositif
+%actif qui applique une force verticale à la caisse de la voiture pour
+%contrebalancer l'effet de la force \og centrifuge \fg. Ceci est illustré sur
+%la figure \ref{Fig:train} où une section de la caisse d'une voiture est
+%représentée schématiquement avec $F_g$ la force de gravité
+%(appliquée au centre de masse $G$), $F_c$ la force "centrifuge" et
+%$F_a$ la force appliquée. On suppose que la ligne d'action de la force
+%$F_a$ est verticale quelle que soit la position angulaire $\theta$ de la
+%caisse. D'autre part la suspension de la voiture est schématisée par
+%un ressort vertical qui exerce une force proportionnelle à son
+%élongation. Le point d'application
+%$P$ du ressort est {\it contraint de se déplacer verticalement}.
+%Etablir un modèle d'état du système. \qed
+For this each car is equipped with an active device that applies a force vertical to the car \blue{body} to compensate the effect of the \og centrifugal \fg force. This is illustrated on
+figure \ref{Fig:train} where a section of the \blue{body} of a car is schematically represented with  the gravity force $F_g $ (applied to the center of mass $G$) the "centrifugal" force $F_c$ and the applied force $F_a$. It is assumed that the action line of force $F_a$ is vertical irrespective of the angular position $\theta$ of the \blue{body}. On the other hand the car's suspension is represented by a vertical spring that exerts a force proportional to its elongation.  The application point $P$ of the spring is \it{forced to move vertically}. Established the state model of the system. \qed
+
 \end{exercice}
 \vv
 
-\begin{exercice}{\bf \em Modélisation de la dynamique d'un camion}
+%\begin{exercice}{\bf \em Modélisation de la dynamique d'un camion}
+\begin{exercice}{\bf \em Modelling of the dynamics of a truck}
 
-On considère un camion se dépla\c cant en ligne droite (Fig. \ref{Fig:exe-camion}), sous les hypothèses de modélisation suivantes~:
+%On considère un camion se dépla\c cant en ligne droite (Fig. \ref{Fig:exe-camion}), sous les %hypothèses de modélisation suivantes~:
+We consider a truck traveling in a straight line (Fig. \ref{Fig:exe-camion}), under the following modelling assumptions~:
 \begin{itemize}
-\item[a)] Le camion est un système articulé composé de corps rigides (caisse et
-roues).
-\item[b)] Le camion est équipé d'une propulsion arrière (le couple développé par
-le moteur est transmis aux roues arrières).
-\item[c)] Les roues roulent sans glisser.
-\item[d)] Les roues sont reliées au chassis par un système de suspension composé
-d'un ressort linéaire et d'un amortisseur à frottement visqueux de masse
-négligeable.  Ce système de suspension ne permet que des déplacements verticaux.
+%\item[a)] Le camion est un système articulé composé de corps rigides (caisse et
+%roues).
+\item[a)] The truck is an articulated system composed of rigid bodies (\blue{body} and wheels)
+%\item[b)] Le camion est équipé d'une propulsion arrière (le couple développé par
+%le moteur est transmis aux roues arrières).
+\item[b)] The truck is equipped with a rear propulsion (the torque developed by
+the motor is transmitted to the rear wheels).
+%\item[c)] Les roues roulent sans glisser.
+\item[c)] The rear wheels roll without slipping.
+%\item[d)] Les roues sont reliées au chassis par un système de suspension composé
+%d'un ressort linéaire et d'un amortisseur à frottement visqueux de masse
+%négligeable.  Ce système de suspension ne permet que des déplacements verticaux.
+\item[d)] The wheels are connected to the frame by a suspension system composed of a linear spring and a viscous friction shock absorber of negligible mass. This suspension system allows only vertical displacements.
 \end{itemize}
 \begin{enumerate}
-\item Etablir un modèle d'état du système qui satisfait ces hypothèses de
-modélisation (se limiter à deux corps : le chassis et une roue motrice).
-\item Quelles sont les principales limites de validité de ce modèle ? \qed
+%\item Etablir un modèle d'état du système qui satisfait ces hypothèses de
+%modélisation (se limiter à deux corps : le chassis et une roue motrice).
+\item Establish a state model of the system that satisfies the modelling assumptions (be limited to two bodies : the frame and a driving wheel)
+%\item Quelles sont les principales limites de validité de ce modèle ? \qed
+\item What are the main limits of validity of this model ? \qed
 \end{enumerate}
 \end{exercice}
 \vv
 
-\begin{exercice}{\bf \em Un bateau}
+%\begin{exercice}{\bf \em Un bateau}
+\begin{exercice}{\bf \em A boat}
 
-Un bateau muni d'un moteur orientable de type \og hors-bord \gf se déplace sur un fleuve comme illustré à la figure \ref{bateau} (vue du dessus). Le fleuve est de largeur constante (= 2$L$). La poussée du moteur est représentée par le vecteur de longueur $F$ (= grandeur de la force de propulsion) et d'orientation $\beta$. Le bateau est aussi soumis à la force du courant du fleuve qui est une fonction parabolique de l'abscisse $y$ : le courant est nul aux deux bords et maximum au milieu du fleuve. Quand le moteur est à l'arrêt, le bateau est entraîné à la vitesse du courant par la force de frottement de l'eau sur la coque. 
+%Un bateau muni d'un moteur orientable de type \og hors-bord \gf se déplace sur un fleuve comme %illustré à la figure \ref{bateau} (vue du dessus). Le fleuve est de largeur constante (= 2$L$). La %poussée du moteur est représentée par le vecteur de longueur $F$ (= grandeur de la force de %propulsion) et d'orientation $\beta$. Le bateau est aussi soumis à la force du courant du fleuve qui %est une fonction parabolique de l'abscisse $y$ : le courant est nul aux deux bords et maximum au %milieu du fleuve. Quand le moteur est à l'arrêt, le bateau est entraîné à la vitesse du courant par la %force de frottement de l'eau sur la coque. 
+A boat equipped with an \blue{adjustable} motor of type \og speedboat \gf moves on a river as shown in figure \ref{bateau} (top view). The river is of constant width (= 2$L$). The engine thrust is shown by the vector of length $F$ (= size of the propulsion force) and of orientation $\beta$. The boat is also subject to the force of the current of the river which is a parabolic function of axis $y$ : the current is zero at both edges and maximal at the middle of the river. When the engine is stopped, the boat is driven at the speed of the current by the friction force of water on the hull .
 \begin{enumerate}
-\item Etablir un modèle d'état du système. Pour simplifier, on peut supposer que :
+%\item Etablir un modèle d'état du système. Pour simplifier, on peut supposer que :
+\item Establish a state model of the system. For simplicity, we can assume that : 
 \begin{itemize}
-\item[a)] le bateau est un corps rigide de masse constante;
-\item[b)] le plan d'eau est quasi-horizontal et la gravité n'influence pas le mouvement du bateau;
-\item[c)] la force exercée par le courant s'applique ponctuellement au centre de masse du bateau (on néglige le fait que la force du courant peut s'exercer de manière variable en divers points de la coque).
+%\item[a)] le bateau est un corps rigide de masse constante;
+\item[a)] the boat is a rigid body of constant mass;
+%\item[b)] le plan d'eau est quasi-horizontal et la gravité n'influence pas le mouvement du bateau;
+\item[b)] the stretch of water is almost horizontal and gravity does not influence the movement of the boat;
+%\item[c)] la force exercée par le courant s'applique ponctuellement au centre de masse du bateau (on néglige le fait que la force du courant peut s'exercer de manière variable en divers points de la coque).
+\item[c)] the force exerted by the current is locally applied at the center of mass of the boat (we neglect the fact that the current force can be exerted in variable ways in diverse points of the hull)
 \end{itemize}
-\item Quelle doit être la capacité de propulsion du moteur pour que l'on ait la garantie que le bateau pourra remonter le courant ? \qed
+%\item Quelle doit être la capacité de propulsion du moteur pour que l'on ait la garantie que le bateau pourra remonter le courant ? \qed
+\item What should be the thrust capacity of the engine to have the guarantee that the boad will be able to go against the current?
 \end{enumerate} 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=10cm]{bateau}
-\caption{Un bateau}
+%\caption{Un bateau}
+\caption{A boat}
 \label{bateau}
 \end{center}
 \end{figure}
 \end{exercice}
 \vv
-
-
 
 \end{document}

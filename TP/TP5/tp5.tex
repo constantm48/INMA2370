@@ -1,4 +1,4 @@
-TODO: 5.3, 5.4
+
 
 \section*{5.1: A chemical process}
 %%% AUTHOR: BENOIT SLUYSMANS %%%
@@ -139,8 +139,142 @@ w c_1^{in} \\
 
 \section*{5.3: Gazeous reactives and products}
 
+%%%%% AUTHOR: Florentin GOYENS %%%%%%%%%%%
+
+We are working with the reactions of example 5.5:
+\begin{eqnarray*}
+X_1 + X_2 \rightarrow 2X_3 \\
+X_3\rightarrow X_4.
+\end{eqnarray*}
+The velocities for the reactions are also given
+$$r_{1}(x)=k_{1}x_{1}x_{2}e^{-Kx_{4}}$$
+$$r_{2}(x)=k_{2}x_{3}^{2}.$$
+
+According to the assumptions made, we compute the variation of each component over time. We account for the chemical reactions and the in/out flux.
+$$\begin{array}{ccl}
+\dot{x_{1}} & = & -1r_{1}(x)+\frac{F_{in}}{V}x_{1}^{in}-\frac{F_{out}}{V}x_{1}\\
+\dot{x_{2}} & = & -1r_{1}(x)+a\frac{Q_{in}}{V}(x_{2}^{sat}-x_{2}) -\frac{F_{out}}{V}x_{2}\\
+\dot{x_{3}} & = & 2r_{1}-2r_{2}-\frac{F_{out}}{V}x_{3}\\
+\dot{x_{4}} & = & 1r_{2}-\frac{dx_{4}}{V}-\frac{F_{out}}{V}x_{4}
+\end{array}$$
+
+Assuming the volume constant gives $F_{in}=F_{out}$ and we set
+$$\begin{array}{ccl}
+u_{1} & = & \frac{F_{in}}{V}\\
+u_{2} & = & \frac{Q_{in}}{V}.
+\end{array}$$
+
+Wich yields
+$$\begin{array}{ccl}
+\dot{x_{1}} & = & -1r_{1}(x)+u_{1}x_{1}^{in}-u_{1}x_{1}\\
+\dot{x_{2}} & = & -1r_{1}(x)+au_{2}(x_{2}^{sat}-x_{2}) -u_{1}x_{2}\\
+\dot{x_{3}} & = & 2r_{1}-2r_{2}-u_{1}x_{3}\\
+\dot{x_{4}} & = & 1r_{2}-\frac{dx_{4}}{V}-u_{1}x_{4}.
+\end{array}$$
+
+This follows the standard form 
+$$
+\frac{dx}{dt}=
+\underbrace{
+\begin{pmatrix}
+-1 & 0 \\
+-1 & 0 \\
+2 & -2 \\
+0 & 1 \\
+\end{pmatrix}}_{C} \underbrace{\begin{pmatrix}
+k_{1}x_{1}x_{2}e^{-Kx_{4}}\\
+k_{2}x_{3}^{2}\\
+\end{pmatrix}}_{r(x)}-\underbrace{\begin{pmatrix}
+u_{1}x_{1}\\
+(u_{1}+au_{2})x_{2}\\
+u_{1}x_{3}\\
+(u_{1}+\frac{d}{V})x_{4}\\
+\end{pmatrix}}_{q_{out}(x,u)}+
+\underbrace{\begin{pmatrix}
+u_{1}x_{1}^{in}\\
+au_{2}x_{2}^{sat}\\
+0\\
+0\\
+\end{pmatrix}}_{q_{in}(x,u)}.
+$$
+
+
+
+
 \section*{5.4: An aerobic biological wastewater treatment plant}
 
+%% AUTHOR Florentin GOYENS
+
+\textcolor{blue}{Il faudrait reprendre le schéma dans le correctif en français.}
+
+The biotic reaction described in the first reactor can be summarized as follows
+$$a_{1}O_{1}+a_{2}S_{1} \cata{X} a_{3}C_{1}+X_{1}$$
+
+The microorganism X is a self-catalysor. We will follows Contois's model for a ecological system. Ence the velocity of the reaction is 
+$$r(S_{1},O_{1},X_{1})=kX_{1}\dfrac{O_{1}}{O_{1}+K_{1}X_{1}}\dfrac{S_{1}}{S_{1}+K_{2}X_{1}}.$$
+We will set $d$, the rate of mortality of the microorganisms. \textcolor{blue}{I think the corresponding term was missing in the equations of the french version.} 
+The oxygen added apears at a rate of $\alpha Q_{in}(O_{sat}-O_{1})$. The volumes of all three reactors are assumed constant. We then express the mass balance of all the components
+$$\begin{array}{ccl}
+\dot{O_{1}} & = & \alpha Q_{in}(O_{sat}-O_{1})-a_{1}r-\dfrac{(F_{in}+F_{r})}{V_{1}}O_{1}+\dfrac{F_{in}}{V_{1}}O_{in}+\dfrac{F_{r}}{V_{1}}O_{3}\\
+\dot{X_{1}} & = & r -dX_{1}-\dfrac{(F_{in}+F_{r})}{V_{1}}X_{1}+\dfrac{F_{r}}{V_{1}}X_{3}\\
+\dot{S_{1}} & = & -a_{2}r+\dfrac{F_{in}}{V_{1}}S_{in}-\dfrac{F_{out}}{V_{1}}S_{1}\\
+\dot{S_{2}} & = & \dfrac{F_{out}}{V_{2}}S_{1}-\dfrac{F_{out}}{V_{2}}S_{2}-\dfrac{F_{out}}{V_{2}}(S_{1}-S_{2})\\
+\dot{O_{2}} & = & \dfrac{F_{out}}{V_{2}}(O_{1}-O_{2})\\
+\dot{O_{3}} & = & \dfrac{F_{in}+F_{r}-F_{out}}{V_{2}}(O_{1}-O_{3})\\
+\dot{X_{3}} & = & -\dfrac{F_{in}+F_{r}-F_{out}}{V_{3}}X_{3}+\dfrac{F_{in}+F_{r}}{V_{3}}X_{1}
+\end{array}$$
+
+
+This simplifies as 
+$$\begin{pmatrix}
+\dot{S_{1}}\\
+\dot{O_{1}}\\
+\dot{X_{1}}\\
+\end{pmatrix}=\begin{pmatrix}
+-a_{2}\\
+-a_{1}\\
+1\\
+\end{pmatrix}
+r(S_{1},O_{1},X_{1})+\dfrac{F_{in}}{V_{1}}\begin{pmatrix}
+S_{in}-S_{1}\\
+O_{in}-O_{1}\\
+-X_{1}\\
+\end{pmatrix}+
+\dfrac{F_{r}}{V_{1}}
+\begin{pmatrix}
+-S_{1}\\
+O_{3}-O_{1}\\
+X_{3}-X_{1}\\
+\end{pmatrix}+
+\begin{pmatrix}
+0\\
+\alpha Q_{in}(O_{sat}-O_{1})\\
+-dX_{1}\\
+\end{pmatrix}$$
+\begin{flushleft}
+
+$$\begin{pmatrix}
+\dot{S_{2}}\\
+\dot{O_{2}}\\
+\end{pmatrix}=
+\dfrac{F_{in}}{V_{2}}\begin{pmatrix}
+S_{1}-S_{2}\\
+O_{1}-O_{2}\\
+\end{pmatrix}$$
+$$\begin{pmatrix}
+\dot{O_{3}}\\
+\dot{X_{3}}\\
+\end{pmatrix}=
+\dfrac{F_{in}+F_{r}-F_{out}}{V_{3}}\begin{pmatrix}
+O_{1}-O_{3}\\
+-X_{3}\\
+\end{pmatrix}+
+\dfrac{F_{in}+F_{r}}{V_{3}}
+\begin{pmatrix}
+O\\
+X_{1}\\
+\end{pmatrix}
+$$
 
 
 
