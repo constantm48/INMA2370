@@ -6,7 +6,7 @@ TODO: 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[height=4cm]{ex31}
+\includegraphics[height=4cm]{TP3/ex31.png}
 \end{center}
 \end{figure}
 
@@ -67,7 +67,7 @@ From these state equations, we can find the following state model :
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[scale=0.8]{ex32}
+\includegraphics[scale=0.8]{TP3/ex32.png}
 \end{center}
 \end{figure}
 
@@ -161,14 +161,14 @@ Which gives, by replacing the state variables :
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[scale=0.8]{ex33}
+\includegraphics[scale=0.8]{TP3/ex33.png}
 \end{center}
 \end{figure}
 
 \noindent \textbf{1.}
-In this circuit, we have a capacitor \blue{mesh}\footnote{A mesh is a closed network without repetition of nodes.} formed by $C_1$, $C_2$ and $C_3$. Therefore, we can define 2 state variables as the voltages across $C_1$ and $C_2$, $v_1$ and $v_2$. Here, we don't need the voltage across $C_3$ as a state variable because it is redundant with $v_1$ and $v_2$. Indeed, $v_{C_3} = v_1-v_2$.\\
+In this circuit, we have a capacitor mesh \footnote{A mesh is a closed network without repetition of nodes.} formed by $C_1$, $C_2$ and $C_3$. Therefore, we can define 2 state variables as the voltages across $C_1$ and $C_2$, $v_1$ and $v_2$. Here, we don't need the voltage across $C_3$ as a state variable because it is redundant with $v_1$ and $v_2$. Indeed, $v_{C_3} = v_1-v_2$.\\
 
-In this circuit, we also have a \blue{cut}\footnote{A cut is an ensemble of branches whose extraction will split an associated network in at least two associated separate sub-networks.} of inductance formed by $L_1$, $L_2$ and $L_3$. Therefore, we can define 2 state variables as the currents flowing through $L_1$ and $L_2$, $i_1$ and $i_2$. Here, we don't need the current flowing through $L_3$ as a state variable because it is redundant with $i_1$ and $i_2$. Indeed, $i_{L_3}=i_1+i_2$.\\
+In this circuit, we also have a cut \footnote{A cut is an ensemble of branches whose extraction will split an associated network in at least two associated separate sub-networks.} of inductance formed by $L_1$, $L_2$ and $L_3$. Therefore, we can define 2 state variables as the currents flowing through $L_1$ and $L_2$, $i_1$ and $i_2$. Here, we don't need the current flowing through $L_3$ as a state variable because it is redundant with $i_1$ and $i_2$. Indeed, $i_{L_3}=i_1+i_2$.\\
 
 We thus have 4 state variables : $i_1$, $i_2$, $v_1$, $v_2$.\\
 
@@ -297,6 +297,6 @@ From the second equation, we know that the resistor R is in series with the indu
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[scale=0.8]{ex34}
+\includegraphics[scale=0.8]{TP3/ex34.png}
 \end{center}
 \end{figure}

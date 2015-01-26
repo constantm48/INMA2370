@@ -706,51 +706,52 @@ x_2 &= z_2 \\
 x_3 &= (mgdk^{-1} \sin z_1 + z_1 + J_1k^{-1}z_3) \\
 x_4 &= (mgdk^{-1} z_2 \cos z_1 + z_2 + J_2k^{-1}z_4) 
 \end{split} \end{equation*}
-
-On observe qu'il s'agit d'un difféomorphisme global de $\real^4$ dans $\real^4$. Avec les nouvelles variables d'état le modèle s'écrit sous forme de Brunovski~:
+We observe that there is a global diffeomorphism $\real^4$  in $\real^4$. With the new state variables, the model is written following the Brunovski form:
 \begin{equation*} \begin{split} 
 \dot z_1 &= z_2 \\
 \dot z_2 &= z_3 \\
 \dot z_3 &= z_4 \\
 \dot z_4 &= J_2^{-1}[mgd(z_2^2 \sin z_1 - z_3 \cos z_1) -k z_3] \\ & \hh \hh + kJ_2^{-2}[mgd\sin z_1 + J_1z_3 - u]
 \end{split} \end{equation*}
-On observe aussi que la fonction $\alpha$ est inconditionnellement inversible sur $\real$ par rapport à $u$. La forme de Brunovski est donc ici globalement valide. \qed
+We also observe that the function $\alpha$ is always invertible on $\real$ with respect to $u$. The Brunovski form is thus overall valid.
+\qed
 \end{exemple}
-Pour des systèmes qui ne sont pas donnés sous forme triangulaire mais qui sont affines en l'entrée, le lemme suivant exprime des conditions utiles pour trouver la transformation d'état.
+ 
+ For control-affine system that are not triangular, the following lemma gives usefull conditions to find the state transformation.
 \begin{lemme}{\blanc}
-Un système affine en l'entrée
+A control-affine system
 $$
 \dot x = f(x) + g(x)u \hh \hh x \in \real^n \hh \hh u \in \real
 $$
-peut être mis sous forme canonique de Brunovski dans un domaine $U \subset \real^n$ si il existe une transformation d'état $z = T(x)$ vérifiant les conditions suivantes~:
+can be put in Brunovski form in a domain $U \subset \real^n$ if there exists a state transformation $z = T(x)$ that verify the following conditions~:
 \begin{equation*} \begin{split} 
 & T_{i+1}(x) = \frac{\partial T_i}{\partial x}f(x) \hh \hh i=1,2, \ldots, n-1, \\
 & \frac{\partial T_i}{\partial x}g(x) = 0 \hh \hh i=1,2, \ldots, n-1, \\
 & \frac{\partial T_n}{\partial x}g(x) \neq 0,
 \end{split} \end{equation*}
-pout tout $x \in U$. \qed
+for every $x \in U$. \qed
 \end{lemme}
 \vv
 
-\begin{exemple}{\bf \em Un réacteur chimique (suite)}
-
-Nous montrons comment utiliser le lemme précédent pour retrouver la transformation d'état qui a été postulée sans justification dans l'exemple \ref{exreachim}. Le modèle d'état s'écrit~:
+\begin{exemple}{\bf \em A chemical reacor (continuation) }
+We show here how to use the previous lemma to find the state transformation that has been given in the exemple
+ \ref{exreachim}. The model can be written:
 \begin{equation*} \begin{split}
 \bma{c} \dot x_1 \\ \dot x_2 \ema = \bma{c} -x_1 \\ x_1 \ema + \bma{c} c-x_1 \\ -x_2 \ema u \triangleq f(x) + g(x)u
 \end{split} \end{equation*}
-On considère tout d'abord l'équation aux dérivées partielles~:
+First of all we consider the following partial differential equation.
 \begin{equation*} \begin{split}
 \frac{\partial T_1}{\partial x}g(x)=0 \hh \Rightarrow \hh \frac{\partial T_1}{\partial x_1}(c-x_1) = \frac{\partial T_1}{\partial x_2}x_2
 \end{split} \end{equation*}
-dont une solution est~:
+This equation admits the following solution:
 \begin{equation*} \begin{split}
 T_1(x) = \frac{x_2}{c-x_1}
 \end{split} \end{equation*}
-On calcule ensuite~:
+We calculate then:
 \begin{equation*} \begin{split}
 T_2(x) = \frac{\partial T_1}{\partial x}f(x) \hh \Rightarrow \hh T_2(x) = \frac{kx_1(c-x_1-x_2)}{(c-x_1)^2}
 \end{split} \end{equation*}
-On détermine le domaine $U$ et l'image $V$ de l'application $T:U \rightarrow V$ ainsi définie. On vérifie enfin que la condition $(\partial T_2/\partial x)g(x) \neq 0$ est satisfaite sur $U$~:
+We determine the domain  $U$ and the image $V$ of the so defined application $T:U \rightarrow V$. At last, we check that the condition $(\partial T_2/\partial x)g(x) \neq 0$ is satisfied everywhere on $U$~:
 \begin{equation*} \begin{split}
 \frac{\partial T_2}{\partial x}g(x) = \frac{c(c-x_1-x_2)}{(c-x_1)^2} \neq 0 \xqedhere{3.9cm}{\qed}
 \end{split} \end{equation*}
@@ -758,96 +759,88 @@ On détermine le domaine $U$ et l'image $V$ de l'application $T:U \rightarrow V$
 
 \section{Exercices}
 
-\begin{exercice}{\bf \em Un four de verrerie}
+\begin{exercice}{\bf \em A glass melting oven}
 
-Au Chapitre 1, Exemple 1.1 et Exercice 1.1, nous avons proposé trois jeux différents de variables d'état pour un modèle de four de verrerie. Déterminer les trois transformations d'état correspondantes et indiquer leurs domaines de définition. \qed
+In chapter 1, Exemple 1.1 and Exercice 1.1, we have introduced three different sets of state variables for a model of glass melting furnace. 
+Determine the three corresponding state transformations and give their definition domain. \qed
+
 \end{exercice}
 \vv
 
 
-\begin{exercice}{\bf \em Un relais electromagnétique}
+\begin{exercice}{\bf \em An electromagnetic relay}
 
-Soit le relais électromagnétique dont le modèle d'état à été
-établi au Chapitre 3, Exemple 3.2.
+We consider the electromagnetic relay which state model has been given in Chapter 3, Exemple 3.2.
 \begin{enumerate}
-\item On choisit les nouvelles variables d'état suivantes : $y_1 = z$,
-$y_2 = \dot z$, $y_3 = \phi(I,z)$. Montrer qu'il s'agit d'une
-transformation d'état valide. Etablir le modèle d'état dans ces
-nouvelles variables.
-\item Montrer que le système peut être mis sous forme canonique de
-Brunovski. Déterminer la transformation d'état et donner une
-interprétation physique des nouvelles variables d'état. \qed
+\item We choose the new following state variables: $y_1 = z$, $y_2 = \dot z$, $y_3 = \phi(I,z)$. Show that it is a valid state transformation. Give the state model expressed with these new variables.
+\item Show that the system can be put in Brunovski canonical form. Determine the state transformations and give a physical interpretation of the state variables. \qed
 \end{enumerate}
 \end{exercice}
 \vv
 
-\begin{exercice}{\bf \em Une cage d'ascenseur}
+\begin{exercice}{\bf \em An elevator shaft}
 
 \begin{tabular}{p{6.5cm}p{2mm}c}
 \vspace{-3.2cm} 
-Sur la figure ci-contre, on a représenté une cage d'ascenseur suspendue à un cable élastique de masse négligeable.
+On the beside figure, we represented an elevator shaft that hangs from an elastic cable of negligible mass.
 \vspace{2mm}
 
-\noindent {\bf Notations :}
+\noindent {\bf Notations:}
 
-$y$ = longueur du câble
+$y$ = length of the cable
 
-$\omega$ = vitesse angulaire de la poulie
+$\omega$ = angular velocity of the pulley
 
-$R$ = rayon de la poulie
+$R$ = radius of the pulley
 
-$m$ = masse de la cage
+$m$ = mass of the elevator shaft
 
 \vspace{2mm}
-\noindent La tension dans le câble est modélisée par la loi de Hooke :
+\noindent The force in the cable is modeled by the Hooke's law:
 \begin{equation*}
 T = \frac{k(y - z)}{z}
 \end{equation*}
-où $z$ est une variable d'état auxiliaire dont la dérivée est la vitesse périphérique de la poulie : $\dot z = R \omega$.
+where $z$ is an auxiliary state variable. The derivative of $z$ is the peripheral speed of the pulley: $\dot z = R \omega$.
 & &
 \parbox[c]{6cm}
 {\includegraphics[width=4.5cm]{ascenseur.pdf}}
 \end{tabular}
 
 \begin{enumerate}
-\item Etablir un modèle d'état avec 4 variables d'état : $y, \dot y, z, \omega$. Le frottement est négligé. La variable d'entrée est le couple de rotation $u$ appliqué à la poulie.
-\item Montrer que le système peut être mis sous forme de Brunovski. Expliciter la transformation d'état. \qed
+\item Find a state model with 4 state variables: $y, \dot y, z, \omega$. We assume the friction is negligible. The input variable is the  torque $u$ applied at the pulley.
+\item Show that the system can be put in Brunovski form. Give the state transformation. \qed
 \end{enumerate}
 \end{exercice}
 \vv
 
-\begin{exercice}{\bf \em Des coccinelles et des pucerons}
+\begin{exercice}{\bf \em Ladybugs and aphids}
 
-Montrer qu'il existe une transformation d'état telle que le système (\ref{coc}) du chapitre 1 modélisant l'interaction entre les populations de coccinelles et de pucerons peut être mis sous la forme d'un système à compartiments. Dessiner le graphe associé. Déterminer les flux $q_{ij}$, la matrice $L$ et la matrice $A(x,u)$. \qed
+Show that there exists a state transformation such that the system (\ref{coc}) in chapter 1 describing the interaction between the ladybug and aphid populations can be put in the form of a compartment system. Draw the associated graph. Determine the flows $q_{ij}$, the matrix $L$ and the matrix   $A(x,u)$. \qed
 \end{exercice}
 \vv
 
-\begin{exercice}{{\bf \em Un réacteur biochimique}}
+\begin{exercice}{{\bf \em A biochemical reactor}}
 
-Soit un réacteur continu parfaitement mélangé et à volume
-constant dans lequel se déroule une réaction chimique autocatalytique
-irréversible mettant en oeuvre deux espèces $A$ et $B$~:
+Let's consider a continuous stirred tank reactor at constant volume. In this reactor, there is an irreversible autocatalytic reaction with two species 
+ $A$ and $B$:
 \e
 A + B \longrightarrow 2B
 \ee
-Le réacteur est alimenté uniquement avec l'espèce $A$, à
-concentration constante. La variable d'entrée est le débit
-volumétrique d'alimentation du réacteur. Les cinétiques obéissent
-à la loi d'action des masses. 
+The reactor is only supplied with the species $A$, at constant concentration. The input variable is the volumetric feed flow of the reactor. Kinetics follows the law of mass action.
+
 \begin{enumerate}
-\item Etablir les équations d'état du système.
-\item Montrer que le système est conservatif.
-\item Déterminer une transformation d'état qui mette le
-système sous forme canonique de Brunowski.
-\item Déterminer la transformation d'état qui met le système sous la forme d'un système à compartiments.
-\item Mêmes questions si la réaction est réversible. \qed
+\item Give the equations of the state system.
+\item Show that the system is conservative.
+\item Determine a state transformation which put the system in Brunovski canonical form.
+\item Determine the state transformation which put the system in compartment system form.
+\item Same questions if the reaction is reversible . \qed
 \end{enumerate}
 \end{exercice}
 \vv
 
-\begin{exercice}{\bf Un four électrique}
+\begin{exercice}{\bf An electric oven}
 
-Un four électrique est chauffé par une thermistance comme indiqué sur la figure ci-dessous.
+An electric oven is heated by a thermistor as mentionned on the figure below.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=8cm]{four}
@@ -856,30 +849,30 @@ Un four électrique est chauffé par une thermistance comme indiqué sur la figu
 \vspace{-5mm}
 \end{figure}
 \begin{enumerate}
-\item Etablir un modèle d'état du système sous les hypothèses de modélisation suivantes :
+\item Develop a state model of the system with the following modelisation assumptions: 
 \begin{itemize}
-\item[a)] La thermistance est une résistance dont la valeur varie avec la temperature suivant la relation de Reinhart-Hart :
+\item[a)] The thermistor is an electrical resistance. Its value depend on the remperature according to the Reinhart-Hart's law:
 \begin{equation*}
 \dfrac{1}{T} = a + b \ln R + c (\ln R)^3
 \end{equation*}
-où $a, b, c$ sont des constantes caratéristiques positives fournies par le constructeur.
-\item [b)] Comme représenté sur la figure, la thermistance est alimentée par une batterie de tension constante $E$ via une inductance (linéaire) constante et une résistance (linéaire) règlable qui est l'entrée du système.
-\item[c)] Le four est chauffé par la thermistance. La perte de chaleur à travers les parois du four est proportionnelle à la différence  entre la température à l'intérieur du four et la température extérieure qui est supposée constante. 
+where $a, b, c$ are constants given by the manufacturer.
+\item [b)] As shown on the figure, the thermistor is powered by a battery of constant voltage $E$ through a constant inductance (linear)  and 
+an adjustable linear resistance which is the input of the system.
+\item[c)] The oven is heated by the thermistor. The heat which is lost through the wall of the oven is proportionnal to the difference between the inside temperature and the outside temperature. The outside temperature is supposed to be constant.
 \end{itemize}
-\item Montrer que le système peut être mis sous forme de Brunovski. Expliciter la transformation d'état. \qed
+\item Show that the system can be put in Brunovski form. Give the state transformation. \qed
 \end{enumerate}
 \end{exercice}
 \vv
 
-\begin{exercice}{\bf \em Un système à deux compartiments}
+\begin{exercice}{\bf \em A two-compartment system}
 
-Soit le système {\em linéaire} à deux compartiments dont le graphe
-est indiqué à la figure \ref{Fig:deuxcomp}. Déterminer la transformation d'état qui diagonalise le
-système. Expliciter les constantes de temps. \qed
+We consider a linear system with two compartments. The graph is given on  (figure  \ref{Fig:deuxcomp}).
+Determine the state transformation diagonalizing the system. Give the time constant. \qed
 \begin{figure}[h] 
    \centering
    \includegraphics[width=6cm]{deuxcomp} 
-   \caption{Graphe d'un système à deux compartiments}
+   \caption{Graph of a system with two compartments.}
    \label{Fig:deuxcomp}
 \end{figure}
 \end{exercice}

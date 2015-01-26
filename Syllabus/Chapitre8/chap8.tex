@@ -330,8 +330,8 @@ Now illustrate the previous sections with some examples of non-linear 2nd order 
 
 
 
-\subsection{Mechanical systems of one degree of
-freedom}
+
+\subsection{Mechanical systems of one degree of freedom}
 
 The state equations of a mechanical system with one degree of freedom can be written (see chapter 2)~:
 \begin{align*}
@@ -416,14 +416,13 @@ freedom}
 \end{table}
 In particular, we observe that an hyperbolic equilibrium can never be a node or a repulsive center.
 
-\subsection{Les circuits électriques RLC}
+%\subsection{Les circuits électriques RLC}
 
 The simple electrical circuits containing only inductance and capacitance are generally referred to {\em RLC circuits} in the literature. In reference books
 Electrical Engineering or circuit theory, they are subject
 to a thorough study because they constitute the basic configuration of many practical devices (filters, oscillators, ...).
 
-The {\em RLC series circuit shown in Figure~\ref{fig:RLCs}
-is a tipical example.
+The {\em RLC series circuit} shown in Figure~\ref{fig:RLCs} is a tipical example.
 \begin{figure}[htbp] 
    \centering
    \includegraphics[height=2.5cm]{RLCs} 
@@ -483,7 +482,7 @@ $r^{'}(0) \leq -2 $& repulsive node\\
 \end{table}
 In particular we note that a hyperbolic equilibrium of a series RLC circuit can never be a saddle.
 
-\subsection{Systems with two compartments}
+%\subsection{Systems with two compartments}
 
 Consider two compartments systems whose graph is shown in figure~\ref{fig:deuxcomp}.
 \begin{figure}[htbp] 
@@ -543,7 +542,7 @@ We deduce that hyperbolic equilibrium of a two-compartments system may be only a
    \label{fig:eq2comp}
 \end{figure}
 
-\subsection{Les systèmes réactionnels à deux espèces}
+%\subsection{Les systèmes réactionnels à deux espèces}
 
 
 The simplest reaction systems involve two species. For example this is the case of an irreversible reaction converting a reagent
@@ -617,7 +616,7 @@ $(a-b)>-d$&attractive node\\ \hline
 \label{tab2esp}
 \end{table}
 
-\section{Periodic trajectories and limit cycles}
+%\section{Periodic trajectories and limit cycles}
 
 From the tables of the sections~8.2, we can make the following observations.
 \begin{enumerate}
@@ -817,13 +816,11 @@ If $E$ is a closed and bounded subset of $\RR^2$, invariant for the system $\dot
 starting in $E$, then~:
 
 \begin{itemize}
-\item[i)] If $E* doen't contain any equilibrium point, then $\gamma$ either is a periodic orbit or converge toward a limit cycle.
+\item[i)] If $E*$ doen't contain any equilibrium point, then $\gamma$ either is a periodic orbit or converge toward a limit cycle.
 
 \item[ii)] If $E$ doesn't contain any periodic orbit but contains a unique equilibrium point, this equilibrium is globally attractive in $E$.\qed
-
 \end{itemize}
 \end{theoreme}
-
 
 Ensuite, si on a pu exclure la
 pr{é}sence d'{é}quilibres dans cet ensemble, celui-ci doit n{é}cessairement contenir un
@@ -836,8 +833,6 @@ able to exclude an equilibrium in this set, this one must necessarily contain a 
 It is important to notice that this two theorems, unlike other results of this chapter, are specific to the plannar systems, 
 and strongly restrict the possible dynamics in two dimensions : the trajectories converge to a point, a cycle, or are unbounded.
 The higher dimensions have a richer behaviour wich exceed the purpose of this course : chaos, strange attractors, etc.
-
-\begin{exemple}{\bf \em Circuit {à} diode tunnel (suite)}
 
 \begin{exemple}{\bf \em Tunnel diode circuit}
 
@@ -857,7 +852,7 @@ u)+x_2f_2(x_1,x_2,\bar u)  < 0$. Let's choose as a radius $r=\sqrt{2}\frac{E}{E-
 \end{figure}
 
 The scalar product is equal to $PS=-(E-1) x_1^2+E x_1-x_2h(x_2)$. Note that the quantity $-x_2h(x_2)$ is always nonpositive except for $x_2=0$.
-\leq 0, PS < 0$. Likewise for $x_1 \geq \frac{E}{E-1}, E x_1 \leq (E-1)x_1^2$ and $PS
+$\leq 0, PS < 0$. Likewise for $x_1 \geq \frac{E}{E-1}, E x_1 \leq (E-1)x_1^2$ and $PS
 <0$. 
 
 Its remains to study the portion of the circule where $x_1 < \frac{E}{E-1}, x_2 > \frac{E}{E-1}.$ A small calculation allows
@@ -874,21 +869,21 @@ and the big one, it is an invariant set because on the border of this set, the v
 Given that the domain doesn't inclure any équilibrium, it must contain a limit cycle (or contain periodic trajectories only). \qed
 \end{exemple}
 
-%Notons encore qu'il existe d'autres ensembles attractifs que des {é}quilibres %ou des
-%cycles limites. Un syst{è}me comprenant trois {é}quilibres dont deux sont des %foyers
-%instables et le troisi{è}me un col peut avoir un portrait de phase comme %illustr{é} {à} la
-%figure~\ref{fig:syshuit}. Dans cet exemple, le ``huit'' illustr{é} sur la figure %est
-%l'ensemble attractif pour tous les points {à} l'ext{é}rieur de cette courbe %ferm{é}e,
-%alors que chacune de ses branches est l'ensemble attractif des points {à} %l'int{é}rieur.
-%Les branches du ``huit'' sont des orbites de trajectoires tendant vers le col %(et ne sont
-%donc pas des orbites p{é}riodiques).
+%%Notons encore qu'il existe d'autres ensembles attractifs que des {é}quilibres %ou des
+%%cycles limites. Un syst{è}me comprenant trois {é}quilibres dont deux sont des %foyers
+%%instables et le troisi{è}me un col peut avoir un portrait de phase comme %illustr{é} {à} la
+%%figure~\ref{fig:syshuit}. Dans cet exemple, le ``huit'' illustr{é} sur la figure %est
+%%l'ensemble attractif pour tous les points {à} l'ext{é}rieur de cette courbe %ferm{é}e,
+%%alors que chacune de ses branches est l'ensemble attractif des points {à} %l'int{é}rieur.
+%%Les branches du ``huit'' sont des orbites de trajectoires tendant vers le col %(et ne sont
+%%donc pas des orbites p{é}riodiques).
+%
+%%\begin{figure}
+%%\vspace*{6cm}
+%%\caption{ensemble attractif complexe}\label{fig:syshuit}
+%%\end{figure}
 
-%\begin{figure}
-%\vspace*{6cm}
-%\caption{ensemble attractif complexe}\label{fig:syshuit}
-%\end{figure}
-
-\section{Bifurcations}
+%\section{Bifurcations}
 
 In this chapter we chose to study the type of systems planning trajectories for a constant 
 value of the input $\bar u$ . This value is not necessarily {\em before} determined, 
@@ -981,7 +976,7 @@ suppose further that $\ frac{ d \alpha ( \bar u ^*) {d} \bar u} > 0$ .
  for $ \bar u < \bar u^* $ and repellent for $ \bar u > \bar u^* $ then
  it is a closed orbit for $ \bar u > \bar u^* $ or $ \bar u < \bar u^* $ .
  In particular, if $ ( \bar x^* \bar u^*)$ is locally attractive, there exists an attractive limit cycle around
- $ (\bar x , \bar u) $ for all $ \mu = \bar u- \u^* Bar > 0$ sufficiently small.
+ $ (\bar x , \bar u) $ for all $ \mu = \bar u-u^{*} Bar > 0$ sufficiently small.
 In addition, the amplitude of the limit cycle increases when $ \mu $ increases.
 \qed
 \end{theoreme}
@@ -997,7 +992,7 @@ the terms of the third order non-linear system
 Fields}, Springer-Verlag, 1983). 
 \end{remarque}
 
-\subsection{Transcritical bifurcation}
+%\subsection{Transcritical bifurcation}
 
 Consider the reaction $$X_1 + X_2 \rightarrow 2 X_2$$ that is taking place in a constant volume reactor, fed by
 a reactive $X_1$ at a concentration $x_1^{in}$, and with a dilution rate of $u$.
@@ -1246,6 +1241,5 @@ As against the fishermen are discouraged to fish with a rate directly proportion
 \item Study the existence and the stability of the equilibria states. 
 \end{enumerate}
 \end{exercice}
-
 
 \end{document}

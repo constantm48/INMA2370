@@ -1,3 +1,371 @@
-%TODO
+\section{Exercice 2.1 : robot manipulators}
 
-TODO
+\subsection{First case}
+
+\begin{figure}[!h]
+\includegraphics[width=2cm]{TP2/images/exe-robot.pdf}
+\end{figure}
+
+\subsubsection{Coordinates} vertical bar : $(x_1, y_1, \theta_1)$ \\
+horizontal bar : $(x_2, y_2, \theta_2)$ \\
+$\xi = \left( \begin{array}{cccccc}
+x_1 &  y_1 & \theta_1 & x_2 & y_2 & \theta_2
+\end{array} \right)^T$
+
+\subsubsection{Constraints}
+Let's fix the y-axis in the middle of the vertical bar and let $ a $ be half its length. We will also consider that we take $ \theta_1$ with respect to the vertical and $\theta_2$ with respect to the horizontal. The constraints are then
+\begin{align}
+x_1 &= 0\\
+y_2 - y_1 &= a \label{contrainty} \\
+\theta_1 &= 0\\
+\theta_2 &= 0
+\end{align}
+so
+$$(\frac{\partial \psi}{\partial \xi})^T = \left( \begin{array}{cccccc}
+1 &  0 & 0 & 0 & 0 & 0\\
+0 & -1 & 0 & 0 & 1 & 0\\
+0 & 0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 1
+\end{array} \right)$$
+whose rank is 4 so the system has 2 degrees of freedom. \\
+
+We can define the following partition
+
+$q = \left( \begin{array}{c}
+y_1\\
+x_2\\
+\end{array} \right)$
+
+$\overline{q} = \left( \begin{array}{c}
+x_1\\
+\theta_1\\
+y_2\\
+\theta_2\\
+\end{array} \right) = \Phi(q) = \left( \begin{array}{c}
+0\\
+0\\
+y_1 + a\\
+0
+\end{array} \right)$
+
+$ \Rightarrow A = (\frac{\partial \Phi}{\partial q})^T = \left( \begin{array}{cccc}
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0
+\end{array} \right)$
+
+\subsubsection{Equations of motion}
+Let $F_1$ (resp. $F_2$) be the force on the vertical bar (resp. horizontal), we have
+\begin{align*}
+m_1\ddot{x_1} &= \lambda_1\\
+J_1\ddot{\theta_1} &= \lambda_2\\
+m_2\ddot{y_2} &= -m_2g + \lambda_3\\
+J_2\ddot{\theta_2} &= \lambda_4
+\end{align*}
+and
+$$ \left( \begin{array}{c} 
+m_1\ddot{y_1} \\
+m_2\ddot{x_2} 
+\end{array} \right) 
+=  \left( \begin{array}{c} 
+-m_1g + F_1\\
+F_2
+\end{array} \right) - A  \left( \begin{array}{c} 
+\lambda_1\\
+\lambda_2\\
+\lambda_3\\
+\lambda_4
+\end{array} \right)
+= \left( \begin{array}{c} 
+-m_1g-\lambda_3\\
+F_2
+\end{array} \right).$$
+
+
+\subsubsection{Suppression of Lagrange's coefficients}
+We have thus $$\lambda_3 =  m_2\ddot{y_2}+m_2g$$
+and 
+\begin{align*}
+m_1\ddot{y_1} &= -m_1g + F_1 - m_2\ddot{y_2} - m_2g \\
+&=  -m_1g + F_1 - m_2\ddot{y_1} - m_2g \text{ by using the constraint~(\ref{contrainty})}.
+\end{align*}
+We can now derive a matrix form corresponding to the model $M(q) \ddot{q} + f(q,\dot{q})+g(q) = G(q)u$ :
+$$\left( \begin{array}{cc}
+m_1+m_2 & 0\\
+0 & m_2
+\end{array} \right) \left( \begin{array}{cc}
+\ddot{y_1}\\
+\ddot{x_2}
+\end{array} \right) + \left( \begin{array}{cc}
+0\\
+0
+\end{array} \right) + \left( \begin{array}{cc}
+(m_1+m_2)g\\
+0
+\end{array} \right)
+=  \left( \begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array} \right)  \left( \begin{array}{cc}
+F_1\\
+F_2
+\end{array} \right) $$ and we can easily isolate $\ddot{q}$ by doing
+$$\ddot{q} = M^{-1}(Gu-f-b).$$
+
+
+
+\subsection{Second case}
+
+\begin{figure}[!h]
+\includegraphics[width=2cm]{TP2/images/exe-robot2.pdf}
+\end{figure}
+
+We can apply the same method.
+
+\subsubsection{Coordinates} lower bar: $(x_1, y_1, \theta_1)$ \\
+higher bar : $(x_2, y_2, \theta_2)$ \\
+so $\xi = \left( \begin{array}{cccccc}
+x_1 &  y_1 & \theta_1 & x_2 & y_2 & \theta_2
+\end{array} \right)^T$
+
+\subsubsection{Constraints}
+The constraints are then
+\begin{align}
+x_1 - a \cos \theta_1 &= 0\\
+y_1 - a \sin \theta_1 &= 0\\
+\theta_2 -  \theta_1 &= 0\\
+(x_1 - x_2) \sin \theta_1 + (y_2 - y_1) \cos \theta_1 + b &= 0.
+\end{align}
+The last constraint come from the fact that
+$$\tan \theta_1 = \frac{y_2-y_1+\frac{b}{\cos\theta}}{x_2-x_1},$$
+where $-b$ is the distance between the two bars. So,
+$$(\frac{\partial \psi}{\partial \xi})^T = \left( \begin{array}{cccccc}
+1 &  0 & a\sin\theta_1  & 0 & 0 & 0\\
+0 & 1 & -a\cos\theta_1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0 & 1\\
+\sin\theta_1 & -\cos\theta-1 & (x_1-x_2)\cos\theta_1+(y_1-y_2)\sin\theta_1 & -\sin\theta_1 & \cos\theta_1 & 0
+\end{array} \right)$$
+whose rank is 4 so the system has 2 degrees of freedom. \\
+
+We can define the following partition
+
+$q = \left( \begin{array}{c}
+\theta_1\\
+x_2\\
+\end{array} \right)$
+
+$\overline{q} = \left( \begin{array}{c}
+x_1\\
+y_1\\
+y_2\\
+\theta_2
+\end{array} \right) = \Phi(q) = \left( \begin{array}{c}
+a\cos\theta_1\\
+a\sin\theta_1\\
+x_2\tan\theta_1 + \frac{b}{\cos\theta_1}\\
+\theta_1
+\end{array} \right)$
+
+$ A = (\frac{\partial \Phi}{\partial q})^T = \left( \begin{array}{cccc}
+-a\sin\theta_1 & a\cos\theta_1 & \frac{x_2}{\cos^2\theta_1} + b\frac{\tan \theta_1}{\cos \theta_1}  & 1\\
+0 & 0 & \tan\theta_1 & 0
+\end{array} \right)$
+
+\subsubsection{Equations of motion}
+Let $F_1$ (resp. $F_2$) be the force on the vertical bar (resp. horizontal), we have
+\begin{align*}
+m_1\ddot{x_1} &= \lambda_1\\
+m_1\ddot{y_1} &= -m_1 g + \lambda_2\\
+m_2\ddot{y_2} &= F\sin\theta_1 - m_2 g +\lambda_3 \\
+J_2\ddot{\theta_2} &= \lambda_4
+\end{align*}
+and
+\begin{align*}
+J_1 \ddot{\theta_1} &= T + a \sin\theta_1 \lambda_1 - a \cos\theta_1 \lambda_2 - \lambda_3 \left(\frac{x_2}{\cos^2\theta_1} + b\frac{\tan \theta_1}{\cos\theta_1}\right) - \lambda_4\\
+m_2\ddot{x_2} &= F \cos \theta_1 - \lambda_3 \tan \theta_1.
+\end{align*}
+Then we just have to isolate the $\lambda_i$ and express them in terms of the variables in $q$
+\begin{align*}
+\lambda_1 &= m_1\ddot{x_1} = -m_1a (\cos\theta_1 \dot{\theta_1}^2 + \sin\theta_1 \ddot{\theta_1})\\
+\lambda_2 &= m_1\ddot{y_1} + m_1 g = m_1a (-\sin\theta_1 \dot{\theta_1}^2 + \cos\theta_1 \ddot{\theta_1}) + m_1g\\
+\lambda_3 &= m_2\ddot{y_2} - F\sin\theta_1 + m_2 g\\
+\lambda_4 &= J_2\ddot{\theta_2} = J_2\ddot{\theta_1}
+\end{align*}
+
+
+
+\section{Exercice 2.2 : Dynamic of a rocket}
+
+\subsection{Coordinates} rocket : $(x_1, y_1, \theta_1)$ \\
+engine : $(x_2, y_2, \theta_2)$ \\
+so $\xi = \left( \begin{array}{cccccc}
+x_1 &  y_1 & \theta_1 & x_2 & y_2 & \theta_2
+\end{array} \right)^T$
+
+\subsection{Constraints}
+The constraints are then
+\begin{align}
+x_1 - x_2 - a\cos\theta_2 - b\cos\theta_1 &= 0\\
+y_1 - y_2 - a\sin\theta_2 - b\sin\theta_1 &= 0
+\end{align}
+so
+$$(\frac{\partial \psi}{\partial \xi})^T = \left( \begin{array}{cccccc}
+1 &  0 & b\sin\theta_1  & -1 & 0 & a\sin\theta_2\\
+0 & 1 & -b\cos\theta_1 & 0 & -1 & -a\cos\theta_2
+\end{array} \right)$$
+whose rank is 2 so the system has 4 degrees of freedom. \\
+
+We can define the following partition
+
+$q = \left( \begin{array}{c}
+x_2\\
+y_2\\
+\theta_1\\
+\theta_2
+\end{array} \right)$
+
+$\overline{q} = \left( \begin{array}{c}
+x_1\\
+y_1
+\end{array} \right)$
+
+$ A = (\frac{\partial \Phi}{\partial q})^T = \left( \begin{array}{cccc}
+1 & 0 & -b\sin\theta_1 & -a\sin\theta_2\\
+0 & 1 & b\cos\theta_1 & a\cos\theta_2
+\end{array} \right)$
+
+\subsection{Equations of motion}
+Let $F_1$ (resp. $F_2$) be the force on the vertical bar (resp. horizontal), we have
+\begin{align*}
+m_1\ddot{x_1} &= \lambda_1\\
+m_1\ddot{y_1} &= \lambda_2
+\end{align*}
+and
+\begin{align*}
+m_2\ddot{x_2} &= F\cos\theta_2 - \lambda_1\\
+m_2\ddot{y_2} &=  F\sin\theta_2 - \lambda_2 \\
+J_1\ddot{\theta_1} &= b\sin\theta_1 - b \cos\theta_1\lambda_2\\
+J_2\ddot{\theta_2} &= T+a\sin\theta_2\lambda_1 - a \cos\theta_2\lambda_2
+\end{align*}
+so
+$$M(q) = \left( \begin{array}{cccc}
+m_2 & 0 & 0 & 0\\
+0 & m_2 & 0 & 0\\
+0 & 0 & I_1 & 0\\
+0 & 0 & 0 & I_2\\
+\end{array} \right) +
+ \left( \begin{array}{cc}
+1 & 0\\
+0 & 1\\
+-b\sin\theta_1 & b\cos\theta_1\\
+-a\sin\theta_2 & a\cos\theta_2\\
+\end{array} \right)  \left( \begin{array}{cc}
+m_1 & 0\\
+0 & m_1
+\end{array} \right)
+\left( \begin{array}{cccc}
+1 & 0 & -b\sin\theta_1 -a\sin\theta_2\\
+0 & 1 & b\cos\theta_1 & a\cos\theta_2
+\end{array} \right)$$
+\begin{align*}
+C(q,\dot{q}) &= \left( \begin{array}{cccc}
+1 & 0\\
+0 & 1\\
+-b\sin\theta_1 b\cos\theta_1\\
+-a\sin\theta_2 & a\cos\theta_2
+\end{array} \right)  \left( \begin{array}{cc}
+m_1 & 0\\
+0 & m_1
+\end{array} \right)
+\left( \begin{array}{cccc}
+0 & 0 & -b\cos\theta_1\dot{\theta_1} & -a\cos\theta_2\dot{\theta_2} \\
+0 & 0 & -b\sin\theta_1\dot{\theta_1} & -a\sin\theta_2\dot{\theta_2}
+\end{array} \right)\\
+&= \left( \begin{array}{cccc}
+0 & 0 & -b\cos\theta_1\dot{\theta_1} & -a\cos\theta_2\dot{\theta_2} \\
+0 & 0 & -b\sin\theta_1\dot{\theta_1} & -a\sin\theta_2\dot{\theta_2} \\
+0 & 0 & 2b^2\sin\theta_1\cos\theta_1\dot{\theta_1} & ab\sin(\theta_1 - \theta_2) \\
+0 & 0 & ab\sin(\theta_2 - \theta_1) & 2a^2\sin\theta_2\cos\theta_2\dot{\theta_2}
+\end{array} \right)\\
+G(q) &= \left( \begin{array}{cc}
+\cos\theta_2 & 0\\
+\sin\theta_2 & 0\\
+0 & 0\\
+0 & 1
+\end{array} \right)\\
+u &= \left( \begin{array}{c}
+F\\
+T
+\end{array} \right)
+\end{align*}
+
+\section{Exercice 2.3 : Lunar Excursion Module}
+Notations :
+\begin{itemize}
+\item altitude of the LEM : $z$
+\item empty weight : $m_0$
+\item fuel mass : $m$
+\end{itemize}
+Assumptions a+b+c+d :
+$$\frac{d}{dt}[(m+m_0)\dot{z}] = -(m+m_0)g_L +F$$
+Assumptions d+e :
+$$\frac{d}{dt}m = -kF$$
+
+\subsection{State model}
+$x_1 = z, x_2 = \dot{z}, x_3 = m, u = F$
+\begin{align*}
+\dot{x_1} &= x_2\\
+\dot{x_2} &= -g_L + \left(\frac{kx_2+1}{m_0+x_3}\right)u \\
+\dot{x_3} &= -ku\\
+\end{align*}
+
+\subsection{Some limits of validity of the model}
+\begin{itemize}
+\item The movement of the LEM is not strictly vertical;
+\item The position of the center of mass is not fixed with respect to the frame if the mass is variable;
+\item The model is no longer valid when the LEM reaches the Moon.
+\end{itemize}
+
+\section{Exercice 2.4 : A tilting train}
+Let $F_r$ be the spring restoring force, $C_r$ the spring torque, $C_a$ the applied torque. We have
+\begin{align*}
+m\ddot{x} = -F_c +w_1\\
+m\ddot{y} = F_a - F_g - F_r +w_2\\
+J\ddot{\theta} = C_a - C_r + w_3
+\end{align*}
+Let the coordinates of the point $P$ with respect the center of mass $G$ be $(x-a\sin\theta, y - a\cos\theta)$.
+
+So $F_r = k (y-a\cos\theta)$, $C_r = k(y-a\cos\theta)a\sin\theta$, $C_a = F_a(a\sin\theta + b \cos\theta)$.
+
+Contraint : $x = a\sin\theta$
+
+A contraint $ \Rightarrow q = (y,\theta), \overline{q} = x$\\
+Final result : 
+$M(q) \left( \begin{array}{c}
+\ddot{y}\\
+\ddot{\theta}
+\end{array} \right) + C(q,\dot{q}) \left( \begin{array}{c}
+\dot{y}\\
+\dot{\theta}
+\end{array} \right) + g(q) = G(q) u$ with 
+\begin{align*}
+M(q) &=  \left( \begin{array}{cc}
+m & 0\\
+0 & J+m(a\cos\theta)^2
+\end{array} \right)\\
+C(q,\dot{q}) &= \left( \begin{array}{cc}
+0 & 0\\
+0 & -ma^2\dot{\theta}\sin\theta\cos\theta
+\end{array} \right)\\
+g(q) &= \left( \begin{array}{c}
+mg_0 + k (y-a\cos\theta)\\
+a k (y-a\cos\theta)\sin\theta
+\end{array} \right)\\
+G(q) &= \left( \begin{array}{cc}
+1 & 0\\
+a\sin\theta + b \cos\theta & -a\cos\theta
+\end{array} \right)\\
+u &= \left( \begin{array}{c}
+F_a\\
+F_c
+\end{array} \right)
+\end{align*}

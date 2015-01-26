@@ -5,13 +5,11 @@
 	\documentclass{standalone}
 	\begin{document}
 \fi
-
 \graphicspath{ {Chapitre10/images/} }
 
 \setcounter{chapter}{9}
 \chapter{Controllability and path planning}
 \chaptermark{Commandabilité et planification de trajectoires}\label{complantraj}
-
 
 \lettrine[lines=1]{\bf I}{}n the three precedents chapter, we have studied in detail the behavior of the {\it free} dynamic systems whose inputs are {\it constants}~: $\dot x = f(x,\bar u)$.
 In this last chapter, we will consider {\it controlled} dynamic systems $\dot x = f(x,u)$ and we will be particularly interested in the existence and determination of input functions $u(t)$ that can vary with time and that allow to pilot the state system and to plan paths.
@@ -184,146 +182,136 @@ The following theorem allows then to determine the smaller distribution $\Delta^
 
 \begin{theoreme} \label{procedure}
 
-\begin{theoreme} \label{procedure}
-
-
-Dans un voisinage $U$ de $x_0$, on définit la séquence de
-distributions~:
+In a neighbourhood $U$ of $x_0$, the distributions sequence is defined~:
 \eqnn
 \Delta_0(x) &=& \mbox{ span} \{g_1(x), g_2(x), \dots , g_m(x) \} \\
 \Delta_k(x) &=& \Delta_{k-1}(x) + [f(x),\Delta_{k-1}(x)] + 
 \sum_{j=1}^m [g_j(x),\Delta_{k-1}(x)].
 \eeqnn
-Alors $\Delta^*(x) =
-\Delta_{k^*}(x)$ avec $k^*$ le plus petit entier tel que
-$\Delta_{k^*}(x)$ est régulière sur $U$ et invariante par rapport à $f(x)$
-et $g_1(x), g_2(x), \dots ,g_m(x)$. Si toutes les distributions
-$\Delta_k(x), 0 \leq k \leq k^*$ sont régulières sur U, alors $k^* \leq n$.
+Then $\Delta^*(x) = \Delta_{k^*}(x)$ with $k^*$ the smallest integer such that
+$\Delta_{k^*}(x)$ is regular on $U$ and invariant with respect to $f(x)$
+and $g_1(x), g_2(x), \dots ,g_m(x)$. If all distributions 
+$\Delta_k(x), 0 \leq k \leq k^*$ are regular on $U$, then $k^* \leq n$.
 \qed 
 \end{theoreme}
-La dimension de $\Delta^*$ porte le nom de {\it rang d'atteignabilité}
-du système au voisinage de $x_0$.  L'énoncé du  théorème
-\ref{procedure} contient implicitement une procédure pour la
-détermination du rang d'atteignabilité qui consiste à générer
-successivement les distributions $\Delta_k(x)$. La procédure s'arrête
-dès qu'on en trouve une qui est régulière et invariante par rapport à $f$
-et aux $g_i$. Il n'est pas nécessaire de vérifier que
-cette distribution est involutive. Il est intéressant aussi de constater
-que, dans le cas d'un système linéaire $\dot x = Ax + Bu$, on a~:
+The dimension of $\Delta^*$ is called the {\it reachability rank} of the 
+system in the neighbourhood of $x_0$. The statement of the theorem 
+\ref{procedure} implicitly contains a procedure for the determination of the 
+reachability rank which consists of generating successively the distributions 
+$\Delta_k (x)$. The procedure stops as soon as we find one that is regular
+ and invariant with respect to $f$ and $ g_i$. There is no need to check 
+that this distribution is involutive. It is also interesting to observe that in the 
+case of a linear system $\dot x = Ax + Bu$, we have~:
 \eqnn
 \Delta_k = \mbox{ span }\{B \hh AB \dots A^{k-1}B \}
 \eeqnn
-et donc que le rang d'atteignabilité coïncide avec le rang de la matrice
-de commandabilité ${\cal C}$.
+and therefore that the reachability rank coincides with the rank of the controllability 
+matrix ${\cal C}$.
 
-Un système dont le rang d'atteignabilité est maximum (c'est-à-dire égal
-à $n$) au voisinage de $x_0$ possède alors une propriété de
-commandabilité locale semblable à celle du théorème \ref{linear}, même
-si $x_0$ n'est pas un état d'équilibre et même si le linéarisé du système
-n'est pas commandable. 
+A system whose reachability rank is maximum (i.e. equal to $n$) in the 
+neighbourhood of $x_0$ then owns a property of local controllability similar 
+to the one of theorem \ref{linear}, even if $x_0$ is not an equilibrium state 
+and even if the linearized of the system is not controllable.
 
-\begin{theoreme} {\bf Commandabilité locale (2)}
+\begin{theoreme} {\bf Local controllability (2)}
 
-
-Pour le système (\ref{affine}), il existe un voisinage de $x_0$ dont tous
-les états sont atteignables à partir de $x_0$ si et seulement si le rang
-d'atteignabilité du système au voisinage de $x_0$ est égal à $n$.
+For the system  (\ref{affine}), there exists a neighbourhood of $x_0$
+in which all states are reachable from $x_0$ if and only if the reachability rank
+ of the system in the neighbourhood of $x_0$ is equal to $n$.
 \qed
 
 \end{theoreme}
-Enfin on a la propriété de commandabilité complète pour une
-sous-classe de systèmes.
-\begin{theoreme} {\bf Commandabilité
-complète}
 
+Finally we have the complete controllability property for a subclass of 
+systems.
 
-Si $f(x) \in \mbox{ span} \{g_1(x), g_2(x), \dots , g_m(x) \}$
-pour tout $x \in \mathbb{R}^n$ (ceci est vrai en particulier si $f(x) = 0$) et si le
-rang d'atteignabilité vaut $n$ au voisinage de tout $x \in \mathbb{R}^n$, alors le
-système (\ref{affine}) est complètement commandable.
+\begin{theoreme} {\bf Complete controllability}
+
+If $f(x) \in \mbox{ span} \{g_1(x), g_2(x), \dots , g_m(x) \}$ for all 
+$x \in \mathbb{R}^n$ (this is especially true if $f(x) = 0$) and if 
+the reachability rank is $n$ in the neighbourhood of all  $x \in \mathbb{R}^n$,
+then the system (\ref{affine}) is completely controllable.
 \qed 
 \end{theoreme}
-Ces deux théorèmes sont illustrés dans l'exemple suivant.
-\begin{exemple}{\bf Une voiture automobile}
+These two theorems are illustrated in the following example.
 
+\begin{exemple}{\bf A motor vehicle}
 
-Considérons à nouveau le modèle de la voiture automobile de l'exemple
-\ref{voiture} qui s'écrit~:
+Let us consider again the model of the motor vehicle of the example \ref{voiture} which is writen~:
 \eqnn
 \dot x = g_1(x)u_1 + g_2(x)u_2
 \eeqnn
-avec~:
+with~:
 \eqnn
 g_1(x) = \bma{c} \sin \theta_1 \cos \theta_2 \\ 
 -\cos \theta_1 \cos \theta_2 \\ \sin \theta_2 \\ 0 \ema \hu g_2(x) =
 \bma{c} 0 \\ 0 \\ 0 \\ 1 \ema
 \eeqnn
-On calcule les crochets de Lie~:
+We calculate the Lie bracket~:
 \eqnn
 g_3(x) = [g_1(x),g_2(x)] &=& \bma{c} -\sin \theta_1 \sin \theta_2 \\ 
 \cos \theta_1 \sin \theta_2 \\ \cos \theta_2 \\ 0 \ema \\
 g_4(x) = [g_3(x),g_1(x)] &=& \bma{c} \cos \theta_1 \\ \sin \theta_1 \\ 0
 \\0 \ema
 \eeqnn
-On vérifie que $f(x) = 0$ et que la matrice $[g_1(x), g_2(x), g_3(x),
-g_4(x)]$ est régulière pour tout $x$ dans $\mathbb{R}^4$. Ces deux conditions
-suffisent pour que les hypothèses des deux théorèmes précédents
-soient vérifiées. La voiture automobile est donc bien complètement
-commandable même si son modèle linéarisé ne l'est pas.  
+We can check that $f(x) = 0$ and that the matrix $[g_1(x), g_2(x), g_3(x),
+g_4(x)]$ is regular for all $x$ in $\mathbb{R}^4$. These two conditions
+are enough so that the assumptions of the two previous theorems 
+are verified. The motor vehicle is therefore completely controllable even if its
+linear model is not.
 \qed 
 
 \end{exemple} 
-Les résultats présentés dans cette section peuvent
-paraître restrictifs car ils ne s'appliquent qu'à des systèmes affines en
-l'entrée. Leur portée est cependant plus générale car un
-système quelconque $\dot x = f(x,u)$ peut toujours être augmenté par
-une {\it extension dynamique} pour le rendre affine en l'entrée. Il suffit
-en effet de considérer $u$ comme un ensemble additionnel de variables
-d'état et de définir un nouveau vecteur $v$ de variables d'entrée telles
-que~: 
+The results presented in this section can seem restrictive because 
+they only can be applied to systems which are affine in the input.
+Their reach is however more general because any given system 
+ $\dot x = f(x,u)$ can always be increased by a {\it dynamic extension}
+to return it affine in the input. It is indeed enough to consider $u$ as
+an additional set of state variables and to define a new vector $v$ 
+of input variables such as~: 
 \eqnn \dot x &=& f(x,u) \\
 \dot u &=& v
 \eeqnn
-Avec le vecteur d'état augmenté $\xi^T = (x^T,u^T)$, le système
-s'écrit~:
+With the augmented state vector $\xi^T = (x^T,u^T)$, the system is written~:
 \eqn
 &&\dot \xi = \varphi(\xi) + \sum_{j=1}^m g_jv_j = \varphi(\xi) +
 Gv \label{augm}\\
 &\mbox{où : }&\varphi(\xi) = \bma{c} f(x,u) \\ 0 \ema \hu G = \bma{c} 0
 \\ I_m \ema \nonumber
 \eeqn
-La commandabilité du système augmenté (\ref{augm}), que l'on peut vérifier avec les théorèmes précédents, est évidemment suffisante pour garantir la commandabilité du système original.
+The controllability of the augmented system (\ref{augm}), which can be verified
+with the previous theorems,  is obviously sufficient to guarantee the controllability 
+of the original system.
 
-\section{Planification de trajectoires}
+\section{Trajectory planning}
 
-Dans les sections précédentes, nous avons étudié les conditions et les
-critères qui permettent de savoir si un système est commandable. Il
-est évidemment encore plus intéressant de pouvoir déterminer la
-fonction d'entrée $u(t)$ qui permet effectivement de conduire le
-système d'un état initial $x_0$ à un état final $x_f$ en un temps
-raisonnable. C'est le problème de la {\it planification de trajectoire}
-que nous allons traiter maintenant.
+In the previous sections, we studied the conditions and
+criteria that allow to know whether a system is controllable or not.
+It is obviously even more interesting to be able to
+determine the input function $u(t)$ that effectively allows to lead 
+the system from an initial state $x_0$ to a final state $x_f$ in a 
+reasonable time. This is the so-called {\it trajectory planning} problem 
+that we will explain now.  
 
-\subsection{Systèmes mono-entrée sous forme de Brunovski}
-Nous considérons ici les systèmes affines en l'entrée $\dot x = f(x) +
-g(x)u, u \in \mathbb{R}$ qui peuvent se mettre sous forme de Brunovski et qui
-sont caractérisés par le théorème suivant.
+\subsection{Brunovski single-input systems}
+We consider here the systems affine in the input  $\dot x = f(x) + g(x)u, 
+u \in \mathbb{R}$ that can be put in Brunovski form and that are 
+characterized by the following theorem :
 \begin{theoreme}
 
 
-Un système $\dot x = f(x) +
-g(x)u$ peut être mis sous forme de Brunovski dans un domaine $U
-\subset R^n$ si et seulement si~:
+A system $\dot x = f(x) + g(x)u$ can be put in Brunovski form
+in a domain $U \subset R^n$ if and only if~:
 \begin{itemize}
-\item[1)] La matrice ${\cal D} = [g(x) \hh ad_fg(x) \hh ad_f^2g(x) \dots
-ad_f^{n-1}g(x)]$ est régulière $\forall x \in U$;
-\item[2)] La distribution $\Delta(x) = \mbox{ span }\{g(x) 
- \dots ad_f^{n-2}g(x)\}$ est involutive sur $U$. \qed
+\item[1)] The matrix ${\cal D} = [g(x) \hh ad_fg(x) \hh ad_f^2g(x) \dots
+ad_f^{n-1}g(x)]$ is regular $\forall x \in U$;
+\item[2)] The distribution $\Delta(x) = \mbox{ span }\{g(x) 
+ \dots ad_f^{n-2}g(x)\}$ is involutive in $U$. \qed
 \end{itemize}
 \end{theoreme}
-Si ces conditions sont satisfaites, il existe une transformation d'état
-$z=\varphi(x)$, $z : U \longrightarrow V$ telle que le système se
-réécrive sous la forme triangulaire (dite de Brunovski)~:
+If these conditions are satisfied, a state transformation exists
+$z=\varphi(x)$, $z : U \longrightarrow V$ such that the system
+can be rewritten in the triangular form (called Brunovski)~:
 \begin{align} \label{bruno}
 \dot z_1 &= z_2 \nonumber \\
 \dot z_2 &= z_3  \\
@@ -331,117 +319,117 @@ réécrive sous la forme triangulaire (dite de Brunovski)~:
 \dot z_n &= \alpha(z) + \beta(z)u \hu \beta(z) \neq 0 \hh \forall z \in
 V \nonumber
 \end{align}
-On déduit immédiatement de ce théorème qu'un {\it système linéaire} mono-entrée
-$\dot x = Ax + bu$ peut être mis sous forme de Brunovski si et
-seulement si il est complètement commandable. En effet, dans ce cas,
-la matrice ${\cal D}$ est la matrice de commandabilité du système~:
+We deduce immediately from this theorem that a single-input {\it linear system}
+$\dot x = Ax + bu$ can be put in Brunovski form if and only if it is 
+completely controllable. Indeed, in this case, the matrix ${\cal D}$ is the 
+controllability matrix of the system~:
 \eqnn
 {\cal D} = {\cal C} = [b \hh Ab \hh A^2b \dots A^{(n-1)}b]
 \eeqnn
-et la distribution $\Delta$ est nécessairement involutive puisqu'elle ne
-contient que des vecteurs constants. Il existe alors une transformation
-{\it linéaire} d'état~:
+and the distribution $\Delta$ is necessarily involutive since it only 
+contains constant vectors. Then there is a {\it linear} state 
+transformation~:
 \eqnn
 z = Tx
 \eeqnn
-telle que le système se réécrit sous forme de Brunovski~:
+such that the system is rewritten in Brunovski form~:
 \eqnn
 \dot z_i &=& z_{i+1} \hu i = 1, \dots , n \\
 \dot z_n &=& - \sum_{i=1}^n \alpha_i z_i + \beta u
 \eeqnn
-La matrice $T$ est définie comme suit~:
+The matrix $T$ is defined as follow~:
 \eqnn
 T=\bma{c} h^T \\ h^TA \\ \vdots \\ h^TA^{n-1} \ema
 \eeqnn
-où le vecteur $h$ est la dernière colonne de la transposée de l'inverse de la matrice de
-commandabilité ${\cal C}^{-T}$.
+where the vector $h$ is the last column of the the transpose of the
+ inverse of the controllability matrix ${\cal C}^{-T}$.
 
-Une fois que le système, qu'il soit linéaire ou non-linéaire, est sous
-forme de Brunovski, le problème de planification de trajectoire devient
-très facile à résoudre. Nous commençons par en montrer la
-solution pour le cas particulier d'un système quelconque de dimension
-deux.
+Once the system, whether it is linear or non-linear, is in Brunovski form,
+the problem of trajectory planning becomes very easy to solve. We start 
+by showing the solution in the particular case of any system of dimension 
+two.
 
-\begin{exemple} {\bf Un système de dimension 2}
+\begin{exemple} {\bf A system of dimension 2}
 
 
-Soit le système~:
+Let the system be~:
 \eqnn
 \dot x_1 &=& f_1(x_1,x_2) + g_1(x_1,x_2)u \\
 \dot x_2 &=& f_2(x_1,x_2) + g_2(x_1,x_2)u
 \eeqnn
-Le problème est de trouver une fonction d'entrée $u(t)$ qui conduise
-ce système d'un état initial $(x_1(0), x_2(0))$ à un état final
-$(x_1(T), x_2(T))$.
+The problem is to find an input function $u(t)$ that leads this system from 
+an initial state $(x_1(0), x_2(0))$ to a final state $(x_1(T), x_2(T))$.
 
-On suppose qu'il
-existe une transformation d'état~: 
+It is assumed that there is a state transformation~: 
 \eqnn z_1 &=& \phi_1(x_1,x_2) \\
 z_2 &=& \phi_2(x_1,x_2)
 \eeqnn
-qui met le système sous forme de Brunovski~:
+that puts the system in Brunovski form~:
 \eqn
 \dot z_1 &=& z_2 \label{bruno1}\\
 \dot z_2 &=& \alpha(z_1,z_2) + \beta(z_1,z_2)u \label{bruno2}
 \eeqn
-Le problème est maintenant de trouver une fonction $u(t)$ qui conduise
-le système (\ref{bruno1})-(\ref{bruno2}) de l'état initial $z_1(0) =
+Now the problem is to find a function $u(t)$ which leads the system
+(\ref{bruno1})-(\ref{bruno2}) from the initial state $z_1(0) =
 \phi_1(x_1(0),x_2(0))$, $z_2(0) =
-\phi_2(x_1(0),x_2(0))$ à l'état final $z_1(T) =
+\phi_2(x_1(0),x_2(0))$ to the final state $z_1(T) =
 \phi_1(x_1(T),x_2(T))$,  $z_2(T) =
-\phi_2(x_1(T),x_2(T))$. Pour la variable d'état $z_1(t)$,
-on définit une trajectoire polynomiale de la forme~:
+\phi_2(x_1(T),x_2(T))$. 
+For the state variable $z_1(t)$,
+we define a polymonial trajectory as~:
 \eqnn
 z_1(t) = \lambda_3(\frac{t}{T})^3 + \lambda_2(\frac{t}{T})^2 +
 \lambda_1(\frac{t}{T}) + \lambda_0
 \eeqnn
-où les coefficients $\lambda_i$ sont pour le moment inconnus. On
-déduit de la forme de Brunovski que la trajectoire de $z_2(t)$ doit être
-de la forme~:
+where the coefficients $\lambda_i$ are currently unknown.
+We deduce from Brunovski form that the trajectory of $z_2(t)$ must 
+have the form~:
 \eqnn
 z_2(t) = \dot z_1(t) = \frac{3}{T}\lambda_3(\frac{t}{T})^2 + 
 \frac{2}{T}\lambda_2(\frac{t}{T}) + \frac{1}{T}\lambda_1
 \eeqnn
-En explicitant les expressions de $z_1(t)$ et $z_2(t)$ aux instants $t=0$
-et $t=T$, on observe alors que les coefficients $\lambda_i$ sont
-solution du système d'équations linéaires~:
+By clarifying the expressions of $z_1(t)$ et $z_2(t)$ at times $t=0$
+and $t=T$, we then obserce that the coefficients $\lambda_i$ are the
+solutions of the a linear equation system~:
 \eqn
 \bma{cccc} 1 & 0 & 0 & 0 \\ 0 & \frac{1}{T} & 0 & 0 \\ 1 & 1 & 1 & 1 \\ 0 &
 \frac{1}{T} & \frac{2}{T} & \frac{3}{T} \ema \bma{c} \lambda_0 \\ 
 \lambda_1 \\ \lambda_2 \\ \lambda_3 \ema 
 = \bma{c} z_1(0) \\ z_2(0) \\ z_1(T) \\ z_2(T) \ema \label{sl}
 \eeqn
-Les $\lambda_i$ étant ainsi déterminés, on connait maintenant une
-trajectoire $z_1(t), z_2(t)$ qui relie les états initial et final désirés et on
-peut calculer l'entrée $u(t)$ correspondante~: 
+The $\lambda_i$ being also determined, we know now a trajectory
+ $z_1(t), z_2(t)$ which links the desired initial and final states and
+we can calculate the corresponding input $u(t)$~: 
 \eqnn
 u(t) = \frac{\dot z_2(t) - \alpha(z_1(t),z_2(t))}{\beta(z_1(t),z_2(t))}
 \eeqnn
-avec
+with
 \eqnn
 \dot z_2(t) = \frac{6}{T^2}\lambda_3(\frac{t}{T}) +
 \frac{2}{T^2}\lambda_2
 \eeqnn
-Le problème de la planification de trajectoire est ainsi résolu.
+The problem of the trajectory planning is thus solved.
 \qed
 
 \end{exemple}
-Le cas particulier d'un système de dimension $2$ que nous venons d'étudier se généralise facilement en dimension $n$. Rappelons qu'on suppose que le système est sous forme de Brunovski~:
+The particular case of a system of dimension $2$ that we just studied is easily generalized in dimension $n$.
+Let's recall that we assume that the system is in Brunovski form~:
 \eqnn
 \dot z_1 &=& z_2 \\
 \dot z_2 &=& z_3 \\
 &\vdots& \\
 \dot z_n &=& \alpha(z) + \beta(z)u \hu \beta(z) \neq 0 
 \eeqnn
-Il suffit de définir, pour $z_1(t)$, une trajectoire polynomiale de la forme~:
+For $z_1(t)$ it is sufficient to define a polymonial trajectory of the form~:
 \eqnn
 z_1(t) = \sum_{i=0}^{2n-1} \lambda_i(\frac{t}{T})^{i}
 \eeqnn
-En calculant les dérivées successives de $z_1(t)$, on obtient les expressions de $z_j(t)$, $j=2,\dots,n$~:
+By calculating the successive derivatives of $z_1(t)$, we obtain the expressions of $z_j(t)$, $j=2,\dots,n$~:
 \eqnn
 z_j(t) = \sum_{i=j-1}^{2n-1}\frac{i!}{(i-j+1)!}\frac{\lambda_i}{T^{j-1}}(\frac{t}{T})^{-j+1}
 \eeqnn
-En explicitant ensuite ces expressions aux instants $t=0$ et $t=T$, on obtient un système d'équations linéaires qui généralise le système (\ref{sl}) et permet de calculer les $\lambda_i$. Il ne reste plus alors qu'à calculer l'entrée $u(t)$~:
+Then by clarifying these expressions at the instants $t=0$ et $t=T$, we obtain a linear equation system that generalizes
+the system (\ref{sl}) and makes it possible to calculate the $\lambda_i$. Then only the input $u(t)$ remains to be calculated~:
 \eqnn
 u(t) = \frac{\dot z_n(t) - \alpha(z(t))}{\beta(z(t))}
 \eeqnn
@@ -449,36 +437,37 @@ u(t) = \frac{\dot z_n(t) - \alpha(z(t))}{\beta(z(t))}
 \begin{remarque}
 
 
-Nous avons présenté ci-dessus une solution du problème de planification basée sur l'utilisation de fonctions polynomiales d'ordre $2n-1$ pour générer les trajectoires du système. Le choix de telles fonctions polynomiales n'a cependant rien d'impératif. D'une manière plus générale, comme on peut le déduire aisément des développements précédents, on peut utiliser des combinaisons linéaires de $2n-1$ fonctions linéairement indépendantes quelconques.
+We presented above a solution for the trajectory planning problem based on the use of polynomial functions of order $2n-1$ to generate the trajectories of the system. The choice of such polymonial functions is however nothing imperative. More generally, as it can be easily deduced from the previous developments, we can use linear combinations of $2n-1$ linearly independent arbitrary functions.
 
 \end{remarque}
 
-\subsection{Systèmes linéaires multi-entrées}
-Nous considérons maintenant des systèmes linéaires multi-entrées de la forme suivante~:
+\subsection{Multi-input linear systems}
+We now consider multi-input linear systems of the following form~:
 \eqnn
 \dot x = Ax + Bu \hspace{6mm} x \in \mathbb{R}^n \hspace{6mm} u \in \mathbb{R}^m
 \eeqnn
-On suppose que rang($B$) $= m$ et que le système est commandable. On définit
-les {\it indices de commandabilité} $\delta_1, \delta_2, \dots ,
+We assume that the rank($B$) $= m$ and that the system is contrallable. We define the
+{\it indices of controllability} $\delta_1, \delta_2, \dots ,
 \delta_m$~:
 \eqnn
 \delta_i = \mbox{ card}[m_j \geq i \,\, : \,\, j \geq 0]
 \eeqnn
-avec
+with
 \eqnn
-m_0 &=& \mbox{ rang}B\\
-m_1 &=& \mbox{ rang}[B,AB] - \mbox{ rang}B\\
+m_0 &=& \mbox{ rank}B\\
+m_1 &=& \mbox{ rank}[B,AB] - \mbox{ rank}B\\
 \vdots\\
-m_{n-1} &=& \mbox{ rang}[B,\dots,A^{n-1}B]-\mbox{ rang}[B, \dots,
+m_{n-1} &=& \mbox{ rank}[B,\dots,A^{n-1}B]-\mbox{ rank}[B, \dots,
 A^{n-2}B]
 \eeqnn
-Par définition, on a~:
+By definition, we have~:
 \eqnn
-\delta_1 \geq \delta_2 \geq \dots \geq \delta_m \hspace{4mm} \mbox{et}
+\delta_1 \geq \delta_2 \geq \dots \geq \delta_m \hspace{4mm} \mbox{and}
 \hspace{4mm} \sum_{j=1}^m \delta_j = n
 \eeqnn
-Il existe alors une transformation d'état $z=Tx$ qui permet de mettre le
-système sous une forme de Brunovski généralisée constituée de $m$ blocs ayant chacun la forme triangulaire suivante~:
+Then there is a transformation state $z=Tx$ that allows to put the system
+in a generalized Brunovski form composed of $m$ blocks each having the 
+following triangular form~:
 \eqn
 \dot z_{j1} &=& z_{j2} \nonumber \\
 \dot z_{j2} &=& z_{j3} \nonumber \\
@@ -486,22 +475,22 @@ système sous une forme de Brunovski généralisée constituée de $m$ blocs aya
 \dot z_{j\delta_{j-1}} &=& z_{j\delta_j} \nonumber\\
 \dot z_{j\delta_j} &=&  \bindex {\sum}{j=1,m}{i=1,\delta_j} \alpha_{ji} z_{ji} + \sum_{k=1,m} \beta_{jk} u_k \nonumber
 \eeqn
-Le vecteur d'état $z$ est formé des $n$ variables $z_{ji}$, $j=1 \dots m$, $i=1 \dots\delta_j$.
-La matrice $G=[\beta_{jk}]$ est carrée et inversible. Cette forme de Brunovski multi-entrées peut alors être utilisée, comme dans le cas mono-entrée, pour résoudre des problèmes de planification de trajectoire.
+The state vector $z$ is composed of $n$ variables $z_{ji}$, $j=1 \dots m$, $i=1 \dots\delta_j$.
+The matrix $G=[\beta_{jk}]$ is squared and invertible. This multi-input form of Brunovski can be use, as in the mono-input case, to solve trajectory planning problems.
 
-\subsection{Sorties de Brunovski}
- En introduisant la notation $y_j = z_{j1}$, le modèle d'état \eqref{brunomulti} peut aussi être écrit sous la forme plus compacte  
+\subsection{Brunovski's outputs}
+By introducing the notation $y_j = z_{j1}$, the state model \eqref{brunomulti} can also be written under the more compact form
 \eqnn
 \dot y_{j}^{(\delta_{j}+1)} = \bindex {\sum}{j=1,m}{i=1,\delta_j} \alpha_{ji} y_j^{(i)} + \sum_{k=1,m} \beta_{jk} u_k \hu j=1, \dots , m 
 \eeqnn
-c'est-à-dire sous la forme de $m$ équations différentielles linéaires d'ordre $(\delta_{j}~+1)$. Les variables $y_j$ sont des combinaisons linéaires de l'état $x$ et sont appelées {\em sorties de Brunovski}. On remarque que le nombre de sorties de Brunovski est égal au nombre d'entrées du système.
+i.e. under the form of $m$ differential linear equations of order $(\delta_{j}~+1)$. The variables $y_j$ are linear combinations of the state $x$  and are called {\em Brunovski's outputs}. We notice that the number of  Brunovski's outputs is equal to the number of inputs of the system.
 
-\subsection{Systèmes non-linéaires multi-entrées}
-Considérons maintenant un système non-linéaire multi-entrées, affine en l'entrée~:
+\subsection{Multi-input non-linear systems}
+Let's now consider a multi-input non-linear system, affine in the input~:
 \eqnn
 \dot x = f(x) + \sum_{j=1}^m g_j(x)u_j.
 \eeqnn
-Pour ce système, on peut étendre la notion de forme de Brunovski multi-entrées si il existe une transformation d'état non-linéaire $z = T(x)$ qui permette de mettre le système sous la forme bloc-triangulaire
+For this system, we can extend the concept of the Brunovski multi-input form if there exists a non-linear state transformation $z = T(x)$ that allows to put the system under the blok triangular form.
 \eqnn
 \dot z_{j1} &=& z_{j2} \nonumber \\
 \dot z_{j2} &=& z_{j3} \nonumber \\
@@ -509,48 +498,50 @@ Pour ce système, on peut étendre la notion de forme de Brunovski multi-entrée
 \dot z_{j\delta_{j-1}} &=& z_{j\delta_j} \nonumber\\
 \dot z_{j\delta_j} &=&   \alpha_{j} (z) + \sum_{k=1,m} \beta_{jk}(z) u_k \nonumber
 \eeqnn
-où le vecteur d'état $z$ est formé de $n$ variables $z_{ji}$, $j=1 \dots m$, $i=1 \dots\delta_j$ et la matrice carrée $G(z) = [\beta_{jk}(z)]$ est inversible. Dans ce cas, les sorties de Brunovski sont des fonctions non-linéaires de l'état ($y_j = z_{1j} = h_j(x)$) et le modèle peut s'écrire sous la forme d'un système d'équations différentielles nonlinéaires
+where the state vector $z$ is composed of $n$ variables $z_{ji}$, $j=1 \dots m$, $i=1 \dots\delta_j$ and the square matrix $G(z) = [\beta_{jk}(z)]$  is invertible. In this case, Brunovski's outputs are non-linear function of the state ($y_j = z_{1j} = h_j(x)$) and the model can be written as the following system of non-linear differential equations  
 \eqn
 \dot y_{j}^{(\delta_{j}+1)} = \alpha_{j} (z) + \sum_{k=1,m} \beta_{jk}(z) u_k \hu j=1, \dots , m \label{brunomultinonlin}
 \eeqn
-où le vecteur $z$ est maintenant défini comme suit :
+where the vector $z$ is now defined as follows :
 \eqnn
 z = (y_1, \dot y_1, \dots, y_1^{(\delta_1)},  \dots, y_m, \dot y_m, \dots , y_m^{(\delta_m)}).
 \eeqnn
-Contrairement au cas linéaire, les systèmes non-linéaires commandables ne peu-vent pas toujours être mis sous une telle forme de Brunovski multi-entrées. Il sort du cadre de ce texte de discuter des conditions sous lesquelles la transformation est possible. C'est d'ailleurs une question qui n'est pas complètement clarifiée et qui fait encore l'objet de recherches actives à l'heure actuelle. Nous nous limiterons à présenter les deux exemples ci-dessous. Le premier est un exemple simple où le système est naturellement sous la forme de Brunovski multi-entrées (\ref{brunomultinonlin}). Le deuxième exemple est plus complexe. Il montrera un système commandable pour lequel il faut, par une {\em extension dynamique},  utiliser une forme de Brunovski augmentée dont la dimension est supérieure à la dimension du système lui-même.
+Contrary to the linear case, the contrallable non-linear systems cannot always be written as the Brunovski multi-input form. It is beyond the scope of this paper to discuss the conditions under which the transformation is possible. This is as a matter of fact an issue that is not fully clarified and which is still the subject of active research at this time. We will only present the two examples below. The first is a simple example where the system is naturally in Brunovski multi-input form   (\ref{brunomultinonlin}). The second example is more complex. It will show a controllable system for which it is necessary, by a {\em dynamic extension}, to use an expanded Brunovski form whose size is greater than the dimension of the system itself.
 
-\begin{exemple} {\bf Un robot manipulateur}
+\begin{exemple} {\bf A manipulator robot}
 
 
-Considérons à nouveau le modèle du robot manipulateur à deux degrés de liberté que nous avons étudié au chapitre 2 (Exemple 2.2). En examinant le modèle, on observe facilement qu'il est d'emblée donné sous une forme de Brunovski multi-entrées avec les deux coordonnées de position $y_1 = x_1$ et $y_2 = \theta_2$ comme sorties de Brunovski. Pour éviter d'inverser explicitement la matrice d'inertie, on peut écrire le modèle comme suit sous forme matricielle :
+We consider again the model of the manipulator robot with two degrees of freedom that we studied in chapter 2 (Example 2.2). In examining the model, we easily observe that it is straight away given in a Brunovski multi-input form with the two position coordinates $y_1 = x_1$ et $y_2 = \theta_2$ as Brunovski's outputs.  To prevent explicitly inverting  the inertia matrix, we can write the model in a matrix format as follows :
 \eqnn
 \left(\begin{array}{c}\ddot y_1 \\\ddot y_2\end{array}\right) = \left(\begin{array}{cc}m_1 + m_2 & m_2b\cos y_2 \\m_2b \cos y_2 & I_2 + m_2b^2\end{array}\right)^{-1}  \left(\begin{array}{c}m_2b \dot y_2^2 \sin y_2 + u_1 \\-m_2bg_o \sin y_2 +u_2 \end{array}\right).
 \eeqnn
-Les indices de commandabilité sont ici $\delta_1$ = $\delta_2$ = 2. La matrice $G(z)$ est l'inverse de la matrice d'inertie. \qed
+The controllability indices are here $\delta_1$ = $\delta_2$ = 2. . The matrix $G(z)$ is the inverse of the intertia matrix. 
+\qed
 
 \end{exemple}
 
-\begin{exemple}{\bf Dynamique d'une fusée}
+\begin{exemple}{\bf Rocket dynamics}
 
 
-Au chapitre 2 (Exemple 2.1), nous avons établi le modèle de la dynamique d'une fusée comme suit :
+In chapter 2 (Exemple 2.1), we established the dynamic model of a rocket as follows :
 \begin{itemize}
-\item Equations de translation
+\item Translational equations
 \eqnn
 m\ddot{x} &=& (F_1 + F_2)\cos\theta \\ 
 m\ddot{y} &=& (F_1 + F_2)\sin\theta - mg_0 
 \eeqnn
-\item Equation de rotation
+\item Rotational equations
 \eqnn
 I\ddot{\theta} = (F_2 - F_1)d\sin\alpha 
 \eeqnn
 \end{itemize}
 \noindent 
-Dans ces équations, $(x,y)$ est la position du centre de masse de la fusée, $\theta$ l'angle de la fusée par rapport à l'horizontale, $F_{1}$ et $F_{2}$ les poussées des réacteurs, $m$ la masse de la fusée, $I$ son moment d'inertie, $d$ et $\alpha$ des paramètres géométriques et $g_0$ l'accélération de la gravité. Pour simplifier l'écriture sans perte de généralité, nous définissons les entrées
+In these equations, $(x,y)$ is the position of the centre of mass of the rocket, $\theta$ the angle of the rocket relative to the horizontal, $F_{1}$ and $F_{2}$ the thrusts of the engines, $m$ the weight of the rocket, $I$ its moment of inertia, $d$ and $\alpha$ some geometric parameters and $g_0$ the gravitational acceleration. To simplify the writing without loss of generality,  we define the inputs
 \eqnn
 u_1 = \dfrac{F_1 + F_2}{m}, \hu u_2 = \dfrac{(F_2 - F_1)d \sin\alpha}{I}.
 \eeqnn
-Avec ces notations, le modèle d'état s'écrit simplement~:
+
+With these notations, the state model is simply written~:
 \begin{align*}
 \ddot x &= u_1 \cos \theta \\
 \ddot y &= u_1 \sin \theta - g_0 \\
@@ -558,14 +549,15 @@ Avec ces notations, le modèle d'état s'écrit simplement~:
 \end{align*}
 
 \end{exemple}
-Ce système est complètement commandable en vertu du Théorème 10.10. Intuitivement, on peut penser que les coordonnées $x$ et $y$ sont les sorties de Brunovski. Nous allons voir que cette intuition est justifiée, mais qu'elle implique une définition étendue de la notion de forme de Brunovski.
+This system is fully controllable according to the Theorem 10.10. Intuitively, we might think that the coordinates $x$ and $y$ are Brunovski's outputs. We will see that this intuition is justified, but it involves an extended definition of the concept of Brunovski form. 
 
-Calculons les dérivées troisièmes des coordonnées $x$ et $y$ :
+Let's calculate the third derivatives of the coordinates $x$ and $y$ :
 \begin{align*}
 \stackrel{\dots}{x} &= \dot u_1 \cos \theta - u_1 \dot \theta \sin \theta \\
 \stackrel{\dots}{y} &= \dot u_1 \sin \theta + u_1 \dot \theta \cos \theta
 \end{align*}
-Il est clair que ces expressions ne peuvent pas être utilisées pour bâtir une forme de Brunovski du type \eqref{brunomultinonlin} car elles ne contiennent pas l'entrée $u_2$. Par contre si on considère l'entrée $u_1$ comme une variable d'état supplémentaire et qu'on ajoute deux intégrateurs à l'entrée du système, alors on peut montrer que le système étendu possède une forme de Brunovski multi-entrées avec les coordonnées $y_1 = x$ et $y_2 = y$ comme sorties de Brunovski. The extended system can be written in the following format :
+It is clear that these expressions can not be used to build a Brunovski form such as \eqref{brunomultinonlin} because they do not contain the input $u_2$. However, if we consider the input $u_1$ as an additional state variable and add two integrators in the system input, then we can show that the extended system has a multi-input Brunovski form with the coordinates $y_1 = x$ and $y_2 = y$ as Brunovski's outputs. The extended system can be written in the following format :
+
 \begin{align} \label{etendufusee}
 &\ddot x = u_1 \cos \theta \nonumber \\
 &\ddot y = u_1 \sin \theta \nonumber \\
@@ -606,7 +598,7 @@ is non-singular for all $\theta$ and for all $u_1 \neq 0$ (i.e. as long as the t
 
 The non-linear systems which may be written in the form of mutli-inputs Brunovski form, thanks to a possible dynamic extension, are called in the literature, {\em (differentially) flat system}, because they are in a sense, equivalent to linear systems as showed by the computation of the planning trajectory. For this reason, the Brunovski outputs are sometimes called {\em flat ouputs}.
 
-\section{Appendix : Differential Geometry Formulas}
+%\section{Appendix : Differential Geometry Formulas}
 
 \begin{enumerate}
 \item Vector field
@@ -783,5 +775,4 @@ commandable.
 
 \end{exercice}
 
- 
 \end{document}

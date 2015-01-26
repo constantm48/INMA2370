@@ -1,5 +1,5 @@
 
-\subsection*{Exercice 10.1 A balloon}\\
+\subsection*{Exercice 10.1 A balloon}
 %%% AUTHOR: Florentin GOYENS %%%
 
 \textbf{1. Meaning of the equations:}\\
@@ -15,7 +15,8 @@ The meaning of the equations in their respective order is
 \begin{itemize}
 \item Heat conservation,
 \item Newton's law,
-\item Definition of velocity.\\\end{itemize}
+\item Definition of velocity
+\end{itemize}
 
 
 \textbf{2. Controllability:}\\
@@ -49,11 +50,7 @@ Clearly the matrix has full rank since we can assume $\sigma>0$ for physical rea
 
 We look for a transformation to express the system under a Brunovski form. 
 
-
-
 Starting from $\dot{h}=v$, we set $z_{1}=h$ and $z_{2}=v$ wich already gives $\dot{z_{1}}=z_{2}$. Looking for $z_{3}$ we write $z_{3}=\dot{z_{2}}=\dot{v}=\sigma\theta-\frac{v}{\tau_{2}}$.
-
-
 
 This allows us to fully define our transformation $(z_{1},z_{2},z_{3})=T(\theta,v,h)$ by
 $$\begin{array}{lll}
@@ -169,8 +166,6 @@ kz_{1}z_{2}-dz_{2}\\
 
 This shows that the state $z_{3}$ is not commandable. Since it is not influenced by the input $u$ (directly or undireclty). Note that $z_{3}$ coresponds to the difference of concentration between components $B$ and $C$.
 
-
-
 \subsection*{Exercice 10.3: A satelite}
 %%% AUTHOR: Florentin GOYENS %%%
 We will compute the rank of contralability.
@@ -215,8 +210,6 @@ z_{1}(t_{f}) & = & \bar{h_{2}}\\
 \end{array}\right.$$
 
 As we set $z_{1}(t)=\lambda_{3}(\frac{t}{t_{f}})^{3}+\lambda_{2}(\frac{t}{t_{f}})^{2}+\lambda_{1}(\frac{t}{t_{f}})+\lambda_{0}$, we are going to have $4$ equations to find the unknown $\lambda_{i}$. This will give us a expression for $z_{1}(t)$. From wich we will deduce $(z_{3})'=(z_{2})''=(z_{1})'''$. And of course $u$ comes from $\dot{z_{3}}  =  -\frac{\rho h}{M}\dfrac{RT}{P_{0}+\rho h}u$.
-
-
 
 \subsection*{Exercice 10.5 A jumping robot}
 %%% AUTHOR: Florentin GOYENS %%%
