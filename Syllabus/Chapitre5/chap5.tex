@@ -645,38 +645,29 @@ Proposer un modèle d'état du système. \qed
 \end{exercice}
 \vv
 
-\begin{exercice}{\bf \em Réacteur avec alimentations séparées}
+\begin{exercice}{\bf \em Reactor with separated supplies}
 
-Nous avons considéré dans ce chapitre que les différentes espèces qui alimentent un
-réacteur sont fournies ensemble par une canalisation unique (voir par exemple la
-figure \ref{Fig:CSTR}). Un tel dispositif peut avoir l'inconvénient de voir les
-réactions débuter dans la canalisation d'amenée avant d'atteindre le réacteur. Cet
-inconvénient est évité si les réactifs sont introduits dans le réacteur par des
-canalisations séparées. Reconsidérons l'exemple \ref{exempleCSTR} avec des alimentations séparées pour
-les deux réactifs $X_1$ et $X_2$ (voir figure \ref{Fig:CSTRsepar})~:
+We've consider in this chapter that different species which supply a reactor are provided by a unique \textcolor{blue}{pipework} (see example at figure \ref{Fig:CSTR}). \textcolor{blue}{Such a device may have the disadvantage to see the reactions begin in the pipework before being in the reactor}. This disadvantage is avoided if the reagents are put in the reactor by separated pipeworks. Let consider again the example \ref{exempleCSTR} with separated supplies for the two reagents $X_1$ and $X_2$ (see figure \ref{Fig:CSTRsepar})~:
 \begin{figure}[htbp] 
   \centering
    \includegraphics[height=6cm]{CSTRsepar} 
-   \caption{Réacteur continu avec alimentations séparées}
+   \caption{Reactor with separated supplies}
    \label{Fig:CSTRsepar}
 \end{figure}
 \begin{enumerate}
-\item Etablir un modèle d'état du système si les variables d'entrée sont les deux débits volumique d'alimentation $F_{01}$ et $F_{02}$.
-\item Un cas particulier intéressant est celui ou le réacteur
-est alimenté à débit volumique total constant ($F_{01} + F_{02} =$ constante).
-Seule la composition de l'alimentation est variable. En pratique cela peut être
-réalisé en ajustant complémentairement les deux débits $F_{01}$ et $F_{02}$
-avec une vanne à quatre voies (voir figure \ref{Fig:vanne4voies}) de manière
-que leur somme soit constante.  
+\item Establish a state model of the system if the input variables are \textcolor{blue}{the supplies volumetric flows} $F_{01}$ and $F_{02}$.
+\item An interesting particular case is when the reactor is supplied with a constant total volumetric flow ($F_{01} + F_{02} =$ constant).
+Only the suplly's composition is variable. In practice this can be done by a complementary adjustement of the flows $F_{01}$ and $F_{02}$
+with a \textcolor{blue}{four ways valve} (see \ref{Fig:vanne4voies}) in a way that their sum is constant.  
 \begin{figure}[htbp] 
    \centering
    \includegraphics[height=4cm]{vanne4voies} 
-   \caption{Alimentations séparées avec vanne à quatre voies}
+   \caption{Separated supplies with a four ways valve}
    \label{Fig:vanne4voies}
 \end{figure}
-On choisit le débit $F_{01}$
-comme unique variable d'entrée et on définit le taux de dilution constant $d =
-(F_{01} + F_{02})/V$. Etablir le modèle d'état du système et montrer qu'il s'écrit sous la forme (\ref{sysrea}). \qed
+We choose the flow $F_{01}$
+as unique input variable and we define a constant \textcolor{blue}{dilution ratio} $d =
+(F_{01} + F_{02})/V$. Establish the system's state model and show it can be written in the form (\ref{sysrea}). \qed
 \end{enumerate}
 \end{exercice}
 \vv
